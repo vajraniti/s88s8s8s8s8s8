@@ -1,9 +1,11 @@
 /* hiranya, sketch A: the descent.
-   the page goes down from fog-white to black in flat steps;
+   the page goes down from fog-white to black in flat steps
+   (#eeede9, #8f8e89, #62605b, #3c3b38, #2e2d2a, #222120, #161514, #0f0e0d);
    the steps meet through dithered strips (img/strip-*.png), never a css gradient. */
 
 :root {
   --fog: #eeede9;
+  --s1: #8f8e89;
   --s2: #3c3b38;
   --s3: #2e2d2a;
   --s4: #222120;
@@ -105,41 +107,69 @@ a { color: inherit; }
   animation: blink 1.06s steps(1) infinite;
 }
 @keyframes blink { 0%, 64% { opacity: 1; } 65%, 100% { opacity: 0; } }
+/* the one in the table blinks out of step with the one in the fog */
+.cal .cursor { animation-delay: -.53s; }
 .down {
-  position: absolute; left: 92px; top: 1112px;
+  position: absolute; left: 92px; top: 1118px;
   z-index: 2;
   font: 13px/1.4 var(--type);
-  color: #b9b8b3;
+  color: #1b1a18;
 }
 
 /* ---------- 2. the threshold ---------- */
 .threshold {
   position: relative;
-  height: 750px;
-  background: var(--s2) url(img/strip-1.png) left bottom no-repeat;
+  height: 1000px;
+  background:
+    url(img/strip-1.png) left bottom repeat-x,
+    url(img/strip-0.png) left 290px repeat-x,
+    var(--s2);
   overflow: hidden;
+}
+/* the fog-grey shelf above the first seam */
+.threshold::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 292px;
+  background: var(--s1);
 }
 .huge {
   position: absolute;
-  right: -74px; top: 34px;
+  right: -74px; top: 150px;
+  z-index: 1;
   font: 400 440px/1 var(--serif);
   letter-spacing: -14px;
-  color: #4f4d48;
+  color: #575550;
   white-space: nowrap;
   font-variant-numeric: lining-nums;
 }
 .sol {
   position: absolute;
-  right: 0; top: 70px;
+  right: 70px; top: 40px;
+  z-index: 2;
+}
+/* the same seam again, dark specks only, laid over the numeral and the figure:
+   the dark comes up and takes their lower half */
+.seam {
+  position: absolute; left: 0; right: 0; top: 290px; height: 440px;
+  z-index: 3;
+  background: url(img/strip-0-over.png) left top repeat-x;
+  pointer-events: none;
 }
 .speak {
-  position: absolute; left: 212px; top: 168px;
+  position: absolute; left: 212px; top: 112px;
+  z-index: 4;
   font: 15px/1.6 var(--type);
-  color: #d4d2cc;
+  color: #1b1a18;
 }
 .speak p + p { margin-top: 16px; }
+.later-line {
+  position: absolute; left: 246px; top: 742px;
+  z-index: 4;
+  font: 15px/1.6 var(--type);
+  color: #b4b2ac;
+}
 .next-note {
-  position: absolute; left: 118px; top: 470px;
+  position: absolute; left: 118px; top: 846px;
+  z-index: 4;
   font: 11px/1.7 var(--mono);
   color: #a7a59f;
 }
@@ -148,8 +178,8 @@ a { color: inherit; }
 /* ---------- 3. the sheet ---------- */
 .sheet-zone {
   position: relative;
-  background: var(--s4) url(img/strip-2.png) left top no-repeat;
-  padding: 300px 0 200px;
+  background: var(--s4) url(img/strip-2.png) left top repeat-x;
+  padding: 190px 0 200px;
 }
 .sheet-zone::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 300px;
@@ -179,7 +209,7 @@ a { color: inherit; }
 }
 .week span { font-size: 40px; font-style: italic; letter-spacing: 0; vertical-align: 22px; margin: 0 8px; }
 .sheet-code {
-  position: absolute; right: 0; top: 160px;
+  position: absolute; right: 0; top: 168px;
   font: 10px/1.5 var(--mono);
   color: var(--pencil);
   text-align: right;
@@ -282,11 +312,12 @@ a { color: inherit; }
 
 /* the row where the book lied */
 .struck { position: relative; display: inline-block; }
-.struck del { text-decoration: none; color: #5d5b56; }
+.struck del { text-decoration: none; color: #3a3834; }
 .struck .strike {
-  position: absolute; left: -6px; top: 0;
+  position: absolute; left: -6px; top: 1px;
   width: calc(100% + 12px); height: 100%;
   fill: #1d1c1a;
+  opacity: .82;
   overflow: visible;
 }
 .struck { white-space: nowrap; }
@@ -412,9 +443,14 @@ a { color: inherit; }
 .slip {
   position: absolute;
   width: 490px;
-  padding: 18px 66px 20px 22px;
-  background: #d3d1cb url(img/slip-edge-1.png) right top no-repeat;
+  padding: 25px 66px 20px 22px;
+  /* copied, not printed: a toner edge where the lid didn't close, a few specks */
+  background: url(img/slip-toner-1.png) left top no-repeat, #d3d1cb;
   color: var(--ink);
+  /* the right edge is torn off: a flat mask for the body, a torn one for the last 80px */
+  --edge: var(--edge-1);
+  -webkit-mask: linear-gradient(#000, #000) left top / calc(100% - 79px) 100% no-repeat, var(--edge) right top / 80px 600px no-repeat;
+          mask: linear-gradient(#000, #000) left top / calc(100% - 79px) 100% no-repeat, var(--edge) right top / 80px 600px no-repeat;
 }
 .slip header { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
 .slip .code { font: 11px/1 var(--mono); color: #3f3d39; padding-bottom: 4px; }
@@ -444,8 +480,8 @@ a { color: inherit; }
 .slip .why { margin-top: 8px; font: italic 13px/1.35 var(--hand); color: #3c3a36; }
 .struck.sm .strike { left: -4px; width: calc(100% + 8px); }
 .s1 { left: calc(50% - 720px + 470px); top: 124px; transform: rotate(-1.6deg); }
-.s2 { left: calc(50% - 720px + 918px); top: 262px; transform: rotate(1.2deg); background-image: url(img/slip-edge-2.png); }
-.s3 { left: calc(50% - 720px + 404px); top: 520px; transform: rotate(-.5deg); background-image: url(img/slip-edge-3.png); }
+.s2 { left: calc(50% - 720px + 918px); top: 262px; transform: rotate(1.2deg); --edge: var(--edge-2); background-image: url(img/slip-toner-2.png); }
+.s3 { left: calc(50% - 720px + 404px); top: 520px; transform: rotate(-.5deg); --edge: var(--edge-3); background-image: url(img/slip-toner-3.png); }
 
 /* ---------- 5. older weeks ---------- */
 .archive {
@@ -478,17 +514,28 @@ a { color: inherit; }
 
 /* below desktop: the table first, the scenery thinned out */
 @media (max-width: 1000px) {
-  .fog { height: 760px; }
-  .mark img { left: auto; right: -260px; top: -200px; width: 760px; height: auto; }
-  .lost { left: 24px; top: 300px; width: 280px; }
+  .fog { height: 920px; }
+  .mark img { left: -30px; top: -170px; width: 560px; height: auto; }
+  .lost { left: 16px; top: 560px; width: auto; right: 16px; }
+  .down { left: 16px; top: 870px; }
+  .week { font-size: 64px; top: 96px; left: 0; }
+  .week span { font-size: 24px; vertical-align: 12px; }
+  .sheet-code { top: 40px; }
   .stamp-time, .side { display: none; }
-  .threshold { height: 420px; }
+  .threshold { height: 640px; background-position: left bottom, left 200px, 0 0; }
+  .threshold::before { height: 202px; }
+  .seam { top: 200px; }
+  .huge { top: 120px; }
+  .later-line { left: 24px; top: 470px; }
+  .next-note { top: 540px; }
+  .sol { right: -60px; top: 60px; }
   .huge { font-size: 220px; letter-spacing: -6px; }
   .sol { width: 300px; height: auto; }
   .speak { left: 24px; top: 80px; }
-  .next-note { left: 24px; top: 240px; }
+  .next-note { left: 24px; }
   .sheet { width: auto; margin: 0 16px; padding: 120px 16px 30px; }
-  .stamp, .cal .stain { display: none; }
+  .stamp { display: none; }
+  .cal .stain { position: relative; left: auto; top: auto; width: 64px; margin-top: 4px; }
   .lie { margin-left: 0; }
   .cal, .cal tbody, .cal tr, .cal td, .cal th { display: block; width: auto; }
   .cal thead, .cal colgroup { display: none; }
@@ -500,4 +547,17 @@ a { color: inherit; }
   .slip, .stub, .slips-say, .arch-say, .bottom { position: static; transform: none; margin: 0 0 24px; width: auto; max-width: 400px; }
   .stub img { width: 100%; height: auto; }
   .bottom { display: block; }
+  .sheet-fog, .sheet-tear { width: 100%; height: auto; }
+  .now-w { left: auto; right: 0; }
+  .slip dd.rule, .struck { white-space: normal; }
+  .struck .strike { display: none; }
+  .struck del { text-decoration: line-through; }
+}
+
+/* torn right edges of the slips (img/slip-mask-*.png, inlined: css masks are
+   fetched with cors, which a sketch opened from disk does not have) */
+:root {
+  --edge-1: url("data:image/png;base64,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");
+  --edge-2: url("data:image/png;base64,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");
+  --edge-3: url("data:image/png;base64,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");
 }

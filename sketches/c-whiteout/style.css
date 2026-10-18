@@ -1,0 +1,417 @@
+/* hiranya, sketch C: whiteout. pale and cold all the way down. the only colour on the page is img/drop.png. */
+
+:root {
+  --paper: #eef0f1;     /* the same white the photo is printed on */
+  --ink: #1f2428;
+  --ink-2: #474e55;
+  --ink-3: #69717a;
+  --hair: #cdd2d6;
+  --ghost: #d9dde0;
+  --mono: "Cousine", "Courier New", monospace;
+  --type: "Courier Prime", "Courier New", monospace;
+  --serif: "Tinos", "Times New Roman", serif;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--paper); }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+p { margin: 0; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- the whiteout ---------- */
+
+.whiteout {
+  position: relative;
+  height: 930px;
+  overflow: hidden;
+}
+.scene {
+  position: absolute;
+  left: 0;
+  top: -150px;
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: auto;
+}
+.mark {
+  position: absolute;
+  left: 63px;
+  top: 74px;
+  margin: 0;
+  line-height: 0;
+}
+.mark img { height: 236px; width: auto; display: block; }
+
+.gloss {
+  position: absolute;
+  left: 176px;
+  top: 284px;
+  font: italic 12px/1.45 var(--serif);
+  color: var(--ink-2);
+}
+
+.voice {
+  position: absolute;
+  left: 236px;
+  top: 128px;
+  font: 14px/1.6 var(--type);
+  color: var(--ink);
+}
+.voice .v2 { margin: 30px 0 0 33px; }
+
+.walkers {
+  position: absolute;
+  left: 690px;
+  top: 628px;
+  font: 12px/1.5 var(--type);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.hero-count {
+  position: absolute;
+  left: 912px;
+  top: 282px;
+  font: 12px/1.6 var(--type);
+  color: var(--ink);
+}
+.walkers span { margin-left: 2ch; }
+.walkers .w3 { margin-left: 1ch; }
+.walkers .w4 { margin-left: 0; }
+.hero-count .code {
+  position: absolute;
+  right: 100%;
+  top: 3px;
+  margin-right: 12px;
+  writing-mode: vertical-rl;
+  white-space: nowrap;
+  font: 9px/1 var(--mono);
+  color: var(--ink-3);
+}
+
+.clock {
+  position: absolute;
+  left: 20px;
+  top: 452px;
+  writing-mode: vertical-rl;
+  font: 10px/1 var(--mono);
+  color: var(--ink-2);
+}
+
+/* ---------- fence ---------- */
+
+.fence {
+  position: relative;
+  z-index: 2;
+  height: 200px;
+  margin-top: -118px;
+  pointer-events: none;
+}
+.wire { display: block; width: 100%; height: 100%; overflow: visible; }
+.wire path {
+  fill: none;
+  stroke: #50575e;
+  stroke-width: 0.95;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+/* ---------- the log ---------- */
+
+.log {
+  position: relative;
+  padding: 18px 0 40px 196px;
+}
+.week {
+  position: absolute;
+  left: 61px;
+  top: 30px;
+  font: 11px/1 var(--mono);
+  color: var(--ink-2);
+  transform: rotate(-5deg);
+  transform-origin: left top;
+}
+.lede {
+  font: 14px/1.6 var(--type);
+  color: var(--ink);
+  margin: 0 0 30px 0;
+}
+.lede p + p { margin-left: 57px; color: var(--ink-2); }
+
+table.cal {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 1214px;
+}
+.cal col.c-time { width: 66px; }
+.cal col.c-imp { width: 56px; }
+.cal col.c-ev { width: 276px; }
+.cal col.c-num { width: 84px; }
+.cal col.c-book { width: 340px; }
+.cal col.c-aside { width: 224px; }
+
+.cal th, .cal td {
+  text-align: left;
+  vertical-align: top;
+  padding: 12px 10px 11px 0;
+  border-bottom: 1px solid var(--hair);
+  font-weight: 400;
+}
+.cal .aside {
+  border-bottom: 0;
+  padding: 12px 0 0 34px;
+  font: 12px/1.5 var(--type);
+  color: var(--ink-2);
+}
+.cal thead th {
+  font: 11px/1 var(--mono);
+  color: var(--ink-3);
+  padding-top: 0;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--ink-2);
+}
+.cal thead th.aside { border-bottom: 0; }
+.cal .num { text-align: right; padding-right: 14px; }
+.cal td.num, .cal td.time {
+  font: 15px/1.3 var(--mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+}
+.cal td.time { color: var(--ink); font-size: 14px; padding-top: 13px; }
+
+/* day rows: a pale big numeral hanging in the left margin */
+.cal .dayrow th {
+  position: relative;
+  padding: 40px 0 8px;
+  font: 11px/1 var(--mono);
+  color: var(--ink-3);
+}
+.cal .dayrow .dnum {
+  position: absolute;
+  left: -152px;
+  top: 14px;
+  font: 400 96px/1 var(--serif);
+  letter-spacing: -0.03em;
+  color: var(--ghost);
+}
+.cal .today .dayrow th { color: var(--ink); }
+.cal .today .dayrow .dnum { color: #a9b0b6; }
+.cal .later .dayrow .dnum { color: #e3e6e8; }
+
+/* impact: text, not chips. high is inverted, medium is just a word. */
+.tag {
+  display: inline-block;
+  font: 10px/1 var(--mono);
+  padding: 2px 4px 3px;
+  margin-top: 2px;
+}
+.tag.hi { background: var(--ink); color: var(--paper); }
+.tag.md { color: var(--ink-2); padding-left: 0; }
+
+.cal td.ev {
+  font: 15.5px/1.3 var(--serif);
+  color: var(--ink);
+}
+.cal td.ev .code {
+  display: block;
+  margin-top: 4px;
+  font: 9.5px/1 var(--mono);
+  color: var(--ink-3);
+}
+
+/* printed numbers land like a stamp that never hits quite straight */
+.cal td.act { color: var(--ink); }
+.ink { display: inline-block; font-weight: 700; color: var(--ink); }
+.ink.r1 { transform: rotate(-1.4deg) translateY(1px); }
+.ink.r2 { transform: rotate(0.9deg) translate(-1px, 0); }
+.ink.r3 { transform: rotate(-0.6deg) translateY(-1px); }
+.tba { color: #9aa1a7; letter-spacing: 0.08em; }
+
+.cal td.book { font: 13px/1.45 var(--type); color: var(--ink-2); }
+.rule { display: block; }
+.did { display: block; margin-top: 5px; font-size: 12px; color: var(--ink-3); }
+.did i { font-style: italic; white-space: nowrap; }
+.did b { font-weight: 700; color: var(--ink); white-space: nowrap; }
+
+.released td.ev { color: var(--ink); }
+.later td.ev { color: #3a4147; }
+.later .rule { color: var(--ink-3); }
+
+/* the book lied: struck by hand, one dried drop */
+.struck { position: relative; display: inline-block; white-space: nowrap; }
+.struck s { text-decoration: none; }
+.strike {
+  position: absolute;
+  left: -3px;
+  top: 0.36em;
+  width: calc(100% + 7px);
+  height: 0.7em;
+  overflow: visible;
+}
+.strike path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.drop {
+  position: absolute;
+  right: -22px;
+  top: 10px;
+  width: 19px;
+  height: 19px;
+}
+.lied .did b { letter-spacing: 0.01em; }
+
+/* now */
+.cal tr.now td { padding: 5px 10px 6px 0; border-bottom: 0; }
+.cal tr.now td:not(.aside) { border-top: 1px solid var(--ink); }
+.cal tr.now td.time { font: 11px/1 var(--mono); color: var(--ink); }
+.cal tr.now td span { font: 10px/1 var(--mono); color: var(--ink); }
+.cal tr.now td.aside { padding: 3px 0 0 34px; }
+
+/* next */
+.next td.ev { font-weight: 400; }
+.next td.time { color: var(--ink); }
+.cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  vertical-align: -0.18em;
+  background: var(--ink);
+  animation: blink 1.1s steps(1) infinite;
+}
+.hero-count .cursor { width: 0.5em; }
+@keyframes blink { 62% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; opacity: 0.8; }
+}
+
+.cal tr.playbook td { border-bottom: 1px solid var(--hair); padding-top: 2px; }
+.cal tr.playbook td.aside { border-bottom: 0; }
+.cal tr.playbook td[colspan] {
+  display: table-cell;
+  position: relative;
+}
+.note {
+  font: 14px/1.6 var(--type);
+  color: var(--ink);
+  padding: 4px 0 22px;
+  max-width: 600px;
+}
+.note p:nth-child(2) { margin-left: 2ch; }
+.note p:nth-child(3) { margin-left: 4ch; color: var(--ink-2); }
+.note .small { font-size: 12px; color: var(--ink-3); margin-top: 10px; }
+.note .small + .small { margin-top: 2px; color: var(--ink); }
+.barcode {
+  position: absolute;
+  right: 6px;
+  top: 12px;
+  font: 40px/1 "Libre Barcode 128 Text", var(--mono);
+  color: var(--ink);
+  transform: rotate(2.2deg);
+  transform-origin: right top;
+}
+
+/* ---------- tally ---------- */
+
+.tally {
+  position: relative;
+  height: 600px;
+  margin-top: 30px;
+  overflow: hidden;
+}
+.tally .frost {
+  position: absolute;
+  left: 0;
+  top: 176px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.tally .big {
+  position: absolute;
+  right: -52px;
+  top: 34px;
+  font: 400 540px/0.82 var(--serif);
+  letter-spacing: -0.05em;
+  color: #c3c9ce;
+  mix-blend-mode: multiply;
+  -webkit-mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAEsCAQAAABHvi1JAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAD/h4/MvwAAAAd0SU1FB+oKEhUVEYxDsowAAAO/SURBVHja7duxTsNAFEXBtcX//7IpnBRgOBKvYYuZ5pKO5mj1pOS4rgX84vzvfwB2JhAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIdyDH65O19sse17WAX5w7VGrtrusFgeAGsdYNAjNuEGtjvSAQ3CDWukFgxg1ibawXBIIbxNq8Qda6Xh+std/W190hnOta95NirX2sFwSCG8TaWC8IBDeItW4QmHGDWBvrBYHgBrHWDQIzbhBrY891PyjLWvvc+/cgm9Rq7W77vkG2qNXa3dYNYm2sG8TaWDeItW4Qa2frBrE21g1ibawbxFo3iLWzdYNYG+sGsTb2Y12vP621fg8Cf3Fca/17pdbuul4QCG4Qa90gMOMGsdYNAjNuEGvdIDDjBrHWDQIzbhBr3SAwc98ga13rsNZ+3/P1cVlrn/uxNqjU2l333KFSa3ddN4i1sW4Qa90g1s7WDWJtrBvE2lg3iLVuEGtn6waxNtYNYm2sb/NCONf9mBzW2ud6QSC4Qax1g8CMG8RaNwjMuEGsdYPAjBvEWjcIzLhBrHWDwMz7BQF+8D7Sl7X2uV4QCO8bZItard1tvSAQ3CDWxnpBILhBrHWDwIwbxNpYLwgEN4i1bhCY8W1eCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCJ9hNcPPbw1/SgAAAABJRU5ErkJggg==");
+  mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAEsCAQAAABHvi1JAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAD/h4/MvwAAAAd0SU1FB+oKEhUVEYxDsowAAAO/SURBVHja7duxTsNAFEXBtcX//7IpnBRgOBKvYYuZ5pKO5mj1pOS4rgX84vzvfwB2JhAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIdyDH65O19sse17WAX5w7VGrtrusFgeAGsdYNAjNuEGtjvSAQ3CDWukFgxg1ibawXBIIbxNq8Qda6Xh+std/W190hnOta95NirX2sFwSCG8TaWC8IBDeItW4QmHGDWBvrBYHgBrHWDQIzbhBrY891PyjLWvvc+/cgm9Rq7W77vkG2qNXa3dYNYm2sG8TaWDeItW4Qa2frBrE21g1ibawbxFo3iLWzdYNYG+sGsTb2Y12vP621fg8Cf3Fca/17pdbuul4QCG4Qa90gMOMGsdYNAjNuEGvdIDDjBrHWDQIzbhBr3SAwc98ga13rsNZ+3/P1cVlrn/uxNqjU2l333KFSa3ddN4i1sW4Qa90g1s7WDWJtrBvE2lg3iLVuEGtn6waxNtYNYm2sb/NCONf9mBzW2ud6QSC4Qax1g8CMG8RaNwjMuEGsdYPAjBvEWjcIzLhBrHWDwMz7BQF+8D7Sl7X2uV4QCO8bZItard1tvSAQ3CDWxnpBILhBrHWDwIwbxNpYLwgEN4i1bhCY8W1eCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCAKBIBAIAoEgEAgCgSAQCJ9hNcPPbw1/SgAAAABJRU5ErkJggg==");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  white-space: nowrap;
+}
+.tally-words {
+  position: absolute;
+  left: 236px;
+  top: 62px;
+  font: 14px/1.6 var(--type);
+}
+.tally-words p:nth-child(2) { margin-left: 41px; }
+.tally-words p:nth-child(3) { margin-left: 11px; color: var(--ink-3); }
+
+/* ---------- end ---------- */
+
+.end {
+  position: relative;
+  height: 740px;
+  overflow: hidden;
+}
+.end-photo {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.last {
+  position: relative;
+  padding: 70px 0 0 196px;
+  font: 14px/1.6 var(--type);
+  z-index: 1;
+}
+.last p + p { margin: 22px 0 0 57px; }
+.wait {
+  position: absolute;
+  left: 640px;
+  bottom: 214px;
+  font: 12px/1.55 var(--type);
+  color: var(--ink);
+  z-index: 1;
+}
+.wait br + * { margin-left: 2ch; }
+.fine {
+  position: absolute;
+  right: 64px;
+  bottom: 22px;
+  max-width: 520px;
+  text-align: right;
+  font: 10px/1.5 var(--mono);
+  color: var(--paper);
+  z-index: 1;
+}
+
+/* the sketch is desktop-first; on a narrow screen the table comes first and the margins let go */
+@media (max-width: 900px) {
+  .log { padding-left: 16px; padding-right: 16px; }
+  .whiteout { height: 70vw; }
+  .mark, .gloss, .walkers, .clock { display: none; }
+  .voice { left: 16px; top: 16px; }
+  .hero-count { left: 16px; top: auto; bottom: 16px; }
+  table.cal { width: 100%; }
+  .cal col.c-aside, .cal .aside { display: none; }
+  .cal .dayrow .dnum { position: static; font-size: 32px; margin-right: 8px; }
+}

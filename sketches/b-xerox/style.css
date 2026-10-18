@@ -1,0 +1,293 @@
+/* hiranya, sketch b: a photocopied sheet someone keeps re-copying.
+   paper and toner only. greys come from dots, never from fills.
+   the one red thing on the page is a thumbprint, and it lives in img/red-print.png. */
+
+:root {
+  --paper: #e6e3dc;   /* the copy paper */
+  --sheet: #f2f0ea;   /* the pasted-down typed sheet, a cleaner stock */
+  --toner: #161514;
+  --ink2: #45413c;    /* typed, lighter key */
+  --ink3: #67625b;    /* faint ribbon */
+  --line: rgba(22, 21, 20, .16);
+}
+
+* { box-sizing: border-box; }
+html { background: var(--paper); }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--toner);
+  font: 15px/1.45 "Courier Prime", "Courier New", monospace;
+  overflow-x: hidden;
+}
+img { display: block; }
+figure { margin: 0; }
+a { color: inherit; }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* the blinking block cursor, only if motion is fine */
+.cur { display: inline-block; width: .56em; height: 1.02em; margin-left: 2px; background: var(--toner); vertical-align: -.16em; }
+@media (prefers-reduced-motion: no-preference) {
+  .cur { animation: blink 1.06s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+}
+
+/* ================= hero: the cover of the copy ================= */
+.hero {
+  position: relative;
+  height: 1000px;
+  overflow: hidden;
+}
+.hero-gloss {
+  position: absolute; left: 22px; top: 14px; margin: 0;
+  font: 12px/1.35 Tinos, "Times New Roman", serif; color: var(--ink2);
+}
+.tag {
+  position: absolute; right: 20px; top: 14px; margin: 0;
+  font: 700 11px/1 Cousine, monospace; color: var(--toner);
+}
+.wordmark { margin: 0; }
+.wordmark img {
+  position: absolute; left: -84px; top: 40px;
+  width: 1572px; height: auto;
+}
+
+/* the 1929 crowd, cut out of a newspaper and pasted over the word */
+.crowd { position: absolute; left: 930px; top: 452px; width: 470px; }
+.crowd .cut { filter: drop-shadow(0 -1.5px 0 rgba(22, 21, 20, .75)) drop-shadow(-1px 0 0 rgba(22, 21, 20, .5)); }
+.crowd .cut-in {
+  background: var(--paper);
+  clip-path: polygon(0.0% 12.68%, 0.86% 12.79%, 2.43% 12.45%, 3.15% 12.28%, 4.79% 12.01%, 5.97% 11.49%, 7.57% 12.3%, 8.81% 11.3%, 10.07% 10.89%, 10.83% 10.37%, 12.45% 10.19%, 13.72% 9.78%, 15.07% 10.47%, 15.87% 10.37%, 17.56% 10.43%, 19.03% 10.54%, 20.59% 10.7%, 21.69% 10.96%, 23.46% 12.49%, 25.02% 12.01%, 25.76% 12.14%, 26.55% 12.8%, 27.42% 13.06%, 28.61% 12.31%, 30.39% 10.29%, 32.17% 10.07%, 33.24% 9.48%, 34.98% 8.72%, 36.62% 7.8%, 37.42% 7.33%, 38.57% 7.17%, 39.55% 6.68%, 40.61% 6.06%, 41.51% 6.18%, 43.27% 5.91%, 44.21% 5.49%, 45.34% 5.95%, 46.54% 6.23%, 47.91% 5.38%, 49.56% 5.54%, 50.55% 4.87%, 51.42% 4.71%, 52.26% 5.06%, 53.43% 4.53%, 54.49% 4.61%, 55.82% 4.79%, 56.57% 4.42%, 57.57% 5.76%, 58.43% 4.22%, 59.65% 4.4%, 61.08% 4.03%, 62.27% 4.35%, 63.58% 4.15%, 65.07% 3.67%, 66.01% 3.81%, 67.61% 4.0%, 69.28% 3.11%, 70.96% 2.5%, 72.33% 2.62%, 73.31% 2.29%, 74.34% 2.02%, 75.34% 1.72%, 76.43% 1.69%, 77.9% 1.51%, 79.47% 1.1%, 80.58% 1.57%, 81.94% 2.04%, 83.61% 1.55%, 84.51% 1.69%, 86.0% 1.72%, 87.25% 1.78%, 88.23% 1.8%, 89.49% 1.32%, 90.53% 1.8%, 91.4% 1.79%, 92.52% 1.66%, 93.73% 2.99%, 94.97% 2.02%, 96.4% 1.65%, 97.85% 1.94%, 99.6% 2.75%, 100% 2.0%, 100% 100%, 0% 100%);
+}
+.crowd img { width: 100%; height: auto; }
+.crowd figcaption {
+  position: absolute; right: -19px; top: 34px;
+  writing-mode: vertical-rl;
+  font: italic 11px/1 Tinos, serif; color: var(--ink2);
+}
+
+/* the barcode label, pasted crooked across the word */
+.label {
+  position: absolute; left: 536px; top: 506px;
+  display: block; width: 432px;
+  padding: 10px 18px 12px 20px;
+  background: var(--sheet);
+  color: var(--toner); text-decoration: none;
+  transform: rotate(-2.4deg);
+  border: 1px solid rgba(22, 21, 20, .7);
+}
+.label-top { display: block; font: 11px/1 "Courier Prime", monospace; color: var(--ink2); margin-bottom: 8px; }
+.bars {
+  display: block;
+  font: 74px/1 "Libre Barcode 128 Text", monospace;
+  height: 48px; overflow: hidden;
+  white-space: nowrap;
+}
+.label-code { display: inline-block; margin-top: 6px; font: 700 13px/1 Cousine, monospace; }
+.label-line { display: inline-block; margin-left: 12px; font: 12px/1 "Courier Prime", monospace; color: var(--ink2); }
+.label-count { display: block; margin-top: 8px; font: 700 15px/1 Cousine, monospace; font-variant-numeric: tabular-nums; }
+
+.hero-voice {
+  position: absolute; left: 132px; top: 836px; margin: 0;
+  font: 15px/1.5 "Courier Prime", monospace; color: var(--toner);
+}
+.hero-week {
+  position: absolute; right: 20px; top: 34px; margin: 0; text-align: right;
+  font: 10px/1.4 Cousine, monospace; color: var(--ink2);
+}
+
+/* ================= the typed sheet ================= */
+.sheet-wrap { position: relative; padding: 150px 0 40px; }
+.margin-v {
+  position: absolute; left: 50px; top: 230px; margin: 0;
+  writing-mode: vertical-rl;
+  font: 11px/1 Cousine, monospace; color: var(--ink2);
+}
+.raven { position: absolute; left: 1086px; top: 57px; width: 150px; height: auto; z-index: 3; }
+
+.sheet {
+  position: relative;
+  margin-left: 112px; width: 1220px;
+  padding: 30px 40px 26px;
+  background: var(--sheet);
+  border: 1px solid rgba(22, 21, 20, .55);
+  transform: rotate(-.35deg);
+}
+/* the copier caught the edge twice: a faint second edge, slightly off */
+.sheet::before {
+  content: ""; position: absolute; inset: -4px 3px 2px -3px;
+  border-top: 1px solid rgba(22, 21, 20, .22); border-left: 1px solid rgba(22, 21, 20, .18);
+  transform: rotate(.18deg); pointer-events: none;
+}
+.sheet-head { display: flex; justify-content: space-between; align-items: baseline; }
+.sheet-head h2 { margin: 0; font: 700 15px/1.3 "Courier Prime", monospace; }
+.typed-on { margin: 0; font: 12px/1 Cousine, monospace; color: var(--ink2); }
+.typed-rule {
+  margin: 8px 0 6px; white-space: nowrap; overflow: hidden;
+  font: 13px/1 "Courier Prime", monospace; color: var(--ink3);
+}
+
+.cal { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.c-time { width: 56px; } .c-imp { width: 34px; } .c-ev { width: 280px; }
+.c-num { width: 80px; } .c-book { width: 370px; } .c-mark { width: 160px; }
+.cal thead th {
+  padding: 8px 8px 7px; text-align: left;
+  font: 12px/1 "Courier Prime", monospace; color: var(--ink2);
+  border-bottom: 1px dashed rgba(22, 21, 20, .45);
+}
+.cal th.n, .cal td.n { text-align: right; }
+.cal td {
+  height: 34px; padding: 0 8px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+  font-size: 14px;
+}
+.cal .dayrow th {
+  padding: 20px 8px 6px; text-align: left; font-weight: 400;
+  border-bottom: 1px solid rgba(22, 21, 20, .5);
+}
+.cal .dayrow b { font: 700 15px/1 "Courier Prime", monospace; }
+.cal .dayrow i { margin-left: 14px; font: italic 13px/1 Tinos, serif; color: var(--ink2); }
+.cal .today .dayrow b { background: var(--toner); color: var(--sheet); padding: 2px 6px 1px; }
+
+.cal .t, .cal .n {
+  font-family: Cousine, monospace; font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.cal thead th.n { font: 12px/1 "Courier Prime", monospace; color: var(--ink2); }
+.cal .t { color: var(--toner); }
+.cal .n { color: var(--ink2); }
+.cal .act { color: var(--toner); }
+.cal .released .act { font-weight: 700; }
+.cal .tba { color: var(--ink3); }
+.cal .dir { font-size: 9px; margin-right: 6px; vertical-align: 1px; }
+.cal .imp { font: 700 12px/1 Cousine, monospace; }
+.cal .name { position: relative; }
+.cal .book { position: relative; font-size: 13px; color: var(--ink2); line-height: 1.3; }
+.cal .released .book { color: var(--toner); }
+.cal .mark { position: relative; padding-left: 2px; padding-right: 0; }
+.cal .code { font: 10px/1 Cousine, monospace; color: var(--ink2); }
+.cal .stamp {
+  position: absolute; left: 82px; top: -6px; width: 92px; height: auto;
+  mix-blend-mode: multiply; pointer-events: none;
+}
+.cal tbody .ev:last-child td { border-bottom-color: transparent; }
+
+/* tuesday: the book line struck and blacked out, corrected underneath */
+.cal .lied td { height: 58px; }
+.struck { position: relative; display: inline-block; color: var(--ink2); }
+.struck .pen { position: absolute; left: -4px; right: -6px; top: calc(50% - 6px); width: calc(100% + 10px); height: 13px; overflow: visible; }
+.pen path { fill: none; stroke: var(--toner); stroke-width: 1.7; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.pen path.p2 { stroke-width: 1.1; opacity: .75; }
+.redact { position: relative; }
+.redact .bar { position: absolute; left: -4px; top: -3px; width: calc(100% + 9px); height: calc(100% + 6px); overflow: visible; filter: url(#rough); }
+.redact .bar path { fill: var(--toner); }
+.correction { display: block; margin-top: 3px; font-weight: 700; color: var(--toner); }
+.thumb {
+  position: absolute; right: 8px; top: -9px; width: 72px; height: auto;
+  transform: rotate(9deg); mix-blend-mode: multiply; pointer-events: none;
+}
+
+/* wednesday 17:00: circled by pen, counting down */
+.loop {
+  position: absolute; left: -112px; top: -5px; width: 312px; height: 44px; overflow: visible;
+  pointer-events: none;
+}
+.loop path { fill: none; stroke: var(--toner); stroke-width: 1.5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.cal .next .name { font-weight: 700; }
+.cal .next .act { font-weight: 700; white-space: nowrap; }
+.cal .next .book { color: var(--toner); }
+.cal .next .code { display: block; margin-bottom: 3px; }
+.next-link { font: 12px/1 "Courier Prime", monospace; }
+
+.legend { margin: 4px 0 0; font: 12px/1.5 "Courier Prime", monospace; color: var(--ink2); }
+
+/* ================= said / did: cut-out strips ================= */
+.said { position: relative; height: 790px; margin-top: 110px; overflow: clip; }
+.said-title {
+  position: absolute; left: 92px; top: 0; margin: 0;
+  font: 400 58px/1 "IM Fell English", Tinos, serif; letter-spacing: -.01em;
+}
+.said-note { position: absolute; left: 96px; top: 134px; margin: 0; font: 13px/1.45 "Courier Prime", monospace; color: var(--ink2); }
+.bus { position: absolute; left: 556px; top: 200px; width: 840px; }
+.bus img { width: 100%; height: auto; }
+.bus figcaption {
+  position: absolute; right: -20px; top: 8px;
+  writing-mode: vertical-rl;
+  font: italic 11px/1 Tinos, serif; color: var(--ink2);
+}
+.strips { list-style: none; margin: 0; padding: 0; filter: drop-shadow(1px 1px 0 rgba(22, 21, 20, .6)) drop-shadow(-1px -1px 0 rgba(22, 21, 20, .35)); }
+.strip {
+  position: absolute; width: 880px;
+  padding: 12px 26px 14px 24px;
+  background: var(--sheet);
+}
+.s1 { left: 150px; top: 214px; transform: rotate(-1.3deg); clip-path: polygon(0 5%, 100% 0, 99.8% 94%, .3% 100%); }
+.s2 { left: 380px; top: 338px; transform: rotate(.9deg); clip-path: polygon(.4% 0, 99.6% 6%, 100% 100%, 0 93%); width: 900px; }
+.s3 { left: 214px; top: 476px; transform: rotate(-.6deg); clip-path: polygon(0 0, 99.5% 3%, 100% 97%, .2% 100%); }
+.s-id { margin: 0 0 6px; font: 11px/1.3 Cousine, monospace; color: var(--ink2); }
+.s-id .code { color: var(--toner); font-weight: 700; margin-right: 8px; }
+.s-row { margin: 0; display: flex; align-items: baseline; gap: 14px; }
+.s-row .k { font: 13px/1 "Courier Prime", monospace; color: var(--ink2); }
+.s-row .big { position: relative; font: 48px/.95 Anton, Impact, sans-serif; margin-right: 18px; }
+.s-row .mv { font: 700 18px/1 Cousine, monospace; font-variant-numeric: tabular-nums; }
+.s-row .verdict { margin-left: auto; font: 700 16px/1 "Courier Prime", monospace; }
+.big.wrong { color: var(--ink2); }
+.big.wrong .pen { position: absolute; left: -6px; top: calc(52% - 7px); width: calc(100% + 12px); height: 14px; overflow: visible; }
+.big.wrong .pen path { stroke-width: 2.6; }
+.big.wrong .pen path.p2 { stroke-width: 1.6; }
+.score { position: absolute; left: 112px; top: 640px; margin: 0; font: italic 15px/1.4 Tinos, serif; color: var(--toner); }
+
+/* ================= playbook ================= */
+.playbook { position: relative; height: 1150px; margin-top: 30px; overflow: clip; }
+.big1700 { position: absolute; left: 384px; top: 0; width: 1180px; height: auto; }
+.pans { position: absolute; left: 118px; top: 380px; width: 340px; }
+.pans img { width: 100%; height: auto; }
+.pans figcaption { width: 260px; margin-top: 10px; font: italic 12px/1.35 Tinos, serif; color: var(--ink2); }
+
+.column {
+  position: absolute; left: 566px; top: 520px; width: 410px;
+  padding: 22px 28px 24px;
+  background: var(--sheet);
+  border: 1px solid rgba(22, 21, 20, .6);
+  transform: rotate(.8deg);
+}
+.col-kicker { margin: 0 0 10px; font: italic 13px/1 Tinos, serif; color: var(--ink2); }
+.column h2 { margin: 0; font: 400 34px/1 "IM Fell English", Tinos, serif; }
+.col-meta { margin: 10px 0 0; font: 12px/1.45 Cousine, monospace; color: var(--ink2); font-variant-numeric: tabular-nums; }
+.col-count { margin: 14px 0 6px; font: 700 26px/1 Cousine, monospace; font-variant-numeric: tabular-nums; }
+.rules { margin: 14px 0 0; padding: 0 0 0 22px; font: 17px/1.42 "IM Fell English", Tinos, serif; }
+.rules li { margin-bottom: 9px; padding-left: 2px; }
+.rules li::marker { font: 12px Cousine, monospace; }
+.rules .num { font: 14px/1 Cousine, monospace; font-variant-numeric: tabular-nums; }
+.col-foot { margin: 14px 0 0; font: 12px/1 "Courier Prime", monospace; color: var(--ink2); }
+
+/* ================= the end ================= */
+.end { position: relative; }
+.tunnel { position: relative; }
+.tunnel img { width: 100%; height: auto; }
+.end-voice {
+  position: absolute; left: 96px; top: 150px; margin: 0;
+  font: 16px/1.55 "Courier Prime", monospace; color: var(--sheet);
+}
+.end-small { position: absolute; left: 98px; top: 290px; margin: 0; font: italic 12px/1 Tinos, serif; color: #a39e96; }
+.colophon { position: relative; min-height: 600px; padding: 70px 0 40px; overflow: clip; }
+.late { width: 760px; height: auto; margin-left: -64px; }
+.credits {
+  position: absolute; left: 812px; top: 110px; width: 400px;
+  font: 12px/1.5 Tinos, serif; color: var(--ink2);
+}
+.credits p { margin: 0 0 10px; }
+.tag-end { top: auto; bottom: 18px; }
+
+/* small screens: not the point of this sketch, but nothing should break */
+@media (max-width: 960px) {
+  .hero { height: 70vh; }
+  .wordmark img { width: 180vw; left: -10vw; }
+  .crowd, .label, .hero-week { display: none; }
+  .hero-voice { left: 16px; top: auto; bottom: 16px; font-size: 13px; }
+  .sheet { margin: 0 16px; width: auto; padding: 18px 12px; transform: none; overflow-x: auto; }
+  .margin-v, .raven { display: none; }
+  .said, .playbook { height: auto; }
+  .said > *, .playbook > *, .strip { position: static !important; transform: none !important; width: auto !important; margin: 16px; }
+}
