@@ -4,90 +4,67 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>hiranya</title>
-<meta name="description" content="usd releases that move gold, week of oct 19, 2026. times utc+3.">
+<meta name="description" content="usd releases that move gold, week of 19 oct 2026. times utc+3. sample numbers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cousine:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&family=Libre+Barcode+128+Text&family=Tinos:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Tinos:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- svg filters: rough marker edge, used only on hand marks -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <filter id="rough" x="-5%" y="-30%" width="110%" height="160%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.09 0.6" numOctaves="2" seed="7" result="n"/>
-    <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/>
-  </filter>
-</svg>
+<!-- the copier itself: the lid was left open on the left, and the drum has a dirty spot -->
+<p class="gen" aria-hidden="true"><span data-gen>copy 03</span></p>
+<div class="page">
+<div class="glass" aria-hidden="true"></div>
+<div class="streak" aria-hidden="true"></div>
 
-<!-- ============ the copy ============ -->
-<header class="hero">
-  <p class="hero-gloss">hiranya: sanskrit for gold.<br>a calendar of usd releases, read from gold's side of the table.</p>
+<!-- ============ the cover, copy 3 ============ -->
+<header class="cover">
+  <h1 class="vh">hiranya</h1>
+  <img class="cover-copy" src="img/hero.png" width="1440" height="1140"
+       alt="the word hiranya, cut out letter by letter and photocopied. under the letters, a boy from the wall street crowd of october 1929 looks straight out.">
   <p class="tag">#xau/2610</p>
-
-  <h1 class="wordmark"><img src="img/hiranya.png" alt="hiranya" width="1780" height="1025"></h1>
-
-  <figure class="crowd">
-    <div class="cut"><div class="cut-in"><img src="img/crowd-1929.png" alt="crowd outside the new york stock exchange, october 1929, halftone" width="760" height="937"></div></div>
-    <figcaption>wall st., thursday oct 24, 1929. they had a forecast too.</figcaption>
-  </figure>
-
-  <a class="label" href="#playbook" aria-label="next release: ISM Services PMI, XAU-ISMS-2610, wednesday 21, 17:00 utc+3. open the playbook">
-    <span class="label-top">next to print</span>
-    <span class="bars" aria-hidden="true">&#204;XAU-ISMS-2610O&#206;</span>
-    <span class="label-code">XAU-ISMS-2610</span>
-    <span class="label-line">ism services pmi, wed 21, 17:00</span>
-    <span class="label-count"><span data-countdown>t-00:37:00</span><span class="cur" aria-hidden="true"></span></span>
-  </a>
-
-  <p class="hero-voice">wednesday, 16:23. ism services prints at 17:00.<br>
-  you have thirty-seven minutes and a book that has been right two times out of three.</p>
-  <p class="hero-week">week 43<br>oct 19 &ndash; 23, 2026<br>times utc+3</p>
+  <p class="voice">nothing has printed since 15:15.<br>you will look again at 16:59.</p>
+  <p class="cap-boy">wall st., 24 october 1929.<br>he had a forecast too.</p>
 </header>
 
-<!-- ============ the typed sheet ============ -->
 <main>
+<!-- ============ the typed sheet, pasted on after the copy ============ -->
 <section class="sheet-wrap" aria-labelledby="sheet-title">
-  <p class="margin-v">week 43 &nbsp; oct 19 to oct 23, 2026 &nbsp; all times utc+3</p>
-  <img class="raven" src="img/raven.png" alt="" width="300" height="214">
-
+  <img class="slip" src="img/slip.png" width="698" height="460"
+       alt="stapled slip: next to print. ism services pmi, wed 21 oct, 17:00 utc+3. forecast 52.0, previous 51.4. barcode XAU-ISMS-2610.">
   <div class="sheet">
-    <div class="sheet-head">
-      <h2 id="sheet-title">usd releases that move gold. high and medium only.</h2>
-      <p class="typed-on">typed wed 21 oct, 16:23 utc+3</p>
-    </div>
-    <div class="typed-rule" aria-hidden="true">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+    <h2 id="sheet-title">usd releases that move gold. high and medium only. week of 19 oct 2026, times utc+3.</h2>
 
     <table class="cal">
-      <caption class="vh">economic calendar for gold, week of october 19 2026, times in utc+3</caption>
-      <colgroup><col class="c-time"><col class="c-imp"><col class="c-ev"><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-book"><col class="c-mark"></colgroup>
+      <caption class="vh">economic calendar for gold, week of 19 october 2026, times in utc+3</caption>
+      <colgroup><col class="c-time"><col class="c-imp"><col class="c-ev"><col class="c-num c-act"><col class="c-num"><col class="c-num"><col class="c-book"><col class="c-mark"></colgroup>
       <thead>
         <tr><th scope="col">time</th><th scope="col"><span class="vh">impact</span></th><th scope="col">event</th><th scope="col" class="n">actual</th><th scope="col" class="n">forecast</th><th scope="col" class="n">previous</th><th scope="col">the book says</th><th scope="col"><span class="vh">status</span></th></tr>
       </thead>
 
       <tbody class="day done">
-        <tr class="dayrow"><th colspan="8" scope="rowgroup"><b>mon 19</b> <i>one print. the book was right. it happens.</i></th></tr>
+        <tr class="dayrow"><th colspan="8" scope="rowgroup"><b>mon 19</b> <i>printed. the book was right.</i></th></tr>
         <tr class="ev released">
           <td class="t">17:00</td><td class="imp" aria-label="high impact">III</td>
-          <td class="name">ISM Manufacturing PMI</td>
+          <td class="name">ISM manufacturing PMI</td>
           <td class="n act"><span class="dir" aria-label="above forecast">&#9650;</span>50.1</td><td class="n">49.5</td><td class="n">48.7</td>
           <td class="book">above forecast -&gt; usd up -&gt; gold down</td>
-          <td class="mark"><span class="code">XAU-ISMM-2610</span><img class="stamp" src="img/stamp-mon.png" alt="printed 17:00" width="231" height="73"></td>
+          <td class="mark"><img class="stamp s-mon" src="img/stamp-mon.png" alt="printed 17:00" width="240" height="74"></td>
         </tr>
       </tbody>
 
       <tbody class="day done">
-        <tr class="dayrow"><th colspan="8" scope="rowgroup"><b>tue 20</b> <i>gold went the other way. nobody apologised.</i></th></tr>
+        <tr class="dayrow"><th colspan="8" scope="rowgroup"><b>tue 20</b> <i>printed. gold went the other way.</i></th></tr>
         <tr class="ev released lied">
           <td class="t">17:00</td><td class="imp" aria-label="medium impact">II</td>
-          <td class="name">JOLTS Job Openings</td>
+          <td class="name">JOLTS job openings</td>
           <td class="n act"><span class="dir" aria-label="above forecast">&#9650;</span>7.44M</td><td class="n">7.20M</td><td class="n">7.18M</td>
           <td class="book">
-            <span class="struck">above forecast -&gt; strong jobs -&gt; <span class="redact"><span class="vh">redacted: </span>gold down<svg class="bar" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true"><path d="M3,6 L22,3.5 L48,5 L77,2.6 L98,4.4 L99.4,12 L97,20.5 L71,21.4 L44,19.6 L18,21.8 L1.5,19 L0.6,11 Z"/></svg></span><svg class="pen" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M1,8.5 C40,6 70,10 112,7 S190,4.5 232,8.2 S286,6.2 299,5.4"/><path class="p2" d="M5,10.6 C60,9 122,12 182,8.8 S258,9.6 296,7.6"/></svg></span>
-            <span class="correction">gold went up, +11.20. the book lied.</span>
-            <img class="thumb" src="img/red-print.png" alt="" width="126" height="114">
+            <span class="struck"><s>above forecast -&gt; strong jobs -&gt; gold down</s><svg class="pen" viewBox="0 0 300 10" preserveAspectRatio="none" aria-hidden="true"><path d="M1,6.2 C38,5.1 74,6.9 118,5.6 C170,4.2 214,6.4 256,5.0 C276,4.4 290,4.9 299,3.6"/></svg></span>
+            <span class="correction">gold went up, +11.20. <span class="lied-mark">the book lied.<svg class="biro" viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2,4.6 C22,3.4 48,5.2 74,4.1 C92,3.5 108,4.4 118,3.2"/><path class="b2" d="M6,9.6 C30,8.0 60,9.9 88,8.4 C100,7.9 110,8.6 116,7.1 C111,7.6 104,8.9 97,9.3"/></svg></span></span>
           </td>
-          <td class="mark"><span class="code">XAU-JOLT-2610</span><img class="stamp" src="img/stamp-tue.png" alt="printed 17:00" width="228" height="65"></td>
+          <td class="mark"><img class="stamp s-tue" src="img/stamp-tue.png" alt="printed 17:00" width="240" height="70"></td>
         </tr>
       </tbody>
 
@@ -95,141 +72,136 @@
         <tr class="dayrow"><th colspan="8" scope="rowgroup"><b>wed 21</b> <i>today. one printed, one to go.</i></th></tr>
         <tr class="ev released">
           <td class="t">15:15</td><td class="imp" aria-label="medium impact">II</td>
-          <td class="name">ADP Non-Farm Employment Change</td>
+          <td class="name">ADP non-farm employment change</td>
           <td class="n act"><span class="dir" aria-label="below forecast">&#9660;</span>98K</td><td class="n">120K</td><td class="n">104K</td>
           <td class="book">below forecast -&gt; weak jobs -&gt; gold up</td>
-          <td class="mark"><span class="code">XAU-ADP-2610</span><img class="stamp" src="img/stamp-wed.png" alt="printed 15:15" width="229" height="65"></td>
+          <td class="mark"><img class="stamp s-wed" src="img/stamp-wed.png" alt="printed 15:15" width="238" height="66"></td>
         </tr>
         <tr class="ev next" id="next">
           <td class="t">17:00</td><td class="imp" aria-label="high impact">III</td>
-          <td class="name">ISM Services PMI<svg class="loop" viewBox="0 0 420 46" preserveAspectRatio="none" aria-hidden="true"><path d="M22,31 C5,24 9,8 62,5.5 C150,0.5 300,1.5 382,6 C416,9 419,27 395,35.5 C338,46 118,45 40,40.5 C12,38 5,29 31,21.5 C52,15 92,12.5 126,13.5"/></svg></td>
-          <td class="n act"><span class="count"><span data-countdown>t-00:37:00</span><span class="cur" aria-hidden="true"></span></span></td><td class="n">52.0</td><td class="n">51.4</td>
-          <td class="book">above forecast -&gt; usd up -&gt; gold down. below -&gt; gold up.</td>
-          <td class="mark"><span class="code">XAU-ISMS-2610</span><a class="next-link" href="#playbook">playbook</a></td>
+          <td class="name"><span class="circled">ISM services PMI<svg class="loop" viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M30,35 C10,33 2,26 4,19 C7,8 40,4 98,3.5 C150,3 188,6 195,15 C200,24 184,33 140,36 C100,38.5 52,38 30,35.5 C22,34.5 18,31 24,28"/></svg></span></td>
+          <td class="n act"><span class="count" aria-live="off"><span data-countdown>t-00:37:00</span><span class="cur" aria-hidden="true"></span></span></td><td class="n">52.0</td><td class="n">51.4</td>
+          <td class="book">above -&gt; gold down. below -&gt; gold up.</td>
+          <td class="mark"><a class="next-link" href="#playbook">the playbook</a></td>
         </tr>
       </tbody>
 
       <tbody class="day">
-        <tr class="dayrow"><th colspan="8" scope="rowgroup"><b>thu 22</b> <i>claims. usually quiet. usually.</i></th></tr>
+        <tr class="dayrow"><th colspan="8" scope="rowgroup"><b>thu 22</b> <i>claims. quiet, mostly.</i></th></tr>
         <tr class="ev">
           <td class="t">15:30</td><td class="imp" aria-label="medium impact">II</td>
-          <td class="name">Unemployment Claims</td>
+          <td class="name">unemployment claims</td>
           <td class="n act tba">&ndash; &ndash;</td><td class="n">200K</td><td class="n">199K</td>
           <td class="book">above forecast -&gt; weak jobs -&gt; gold up</td>
-          <td class="mark"><span class="code">XAU-UNCL-2610</span></td>
+          <td class="mark"></td>
         </tr>
       </tbody>
 
       <tbody class="day">
-        <tr class="dayrow"><th colspan="8" scope="rowgroup"><b>fri 23</b> <i>everything at 15:30, then warsh at 19:30. drink water.</i></th></tr>
+        <tr class="dayrow"><th colspan="8" scope="rowgroup"><b>fri 23</b> <i>three at 15:30, then warsh at 19:30, then nothing until monday.</i></th></tr>
         <tr class="ev">
           <td class="t">15:30</td><td class="imp" aria-label="high impact">III</td>
-          <td class="name">Non-Farm Employment Change</td>
+          <td class="name">non-farm employment change</td>
           <td class="n act tba">&ndash; &ndash;</td><td class="n">140K</td><td class="n">152K</td>
           <td class="book">above forecast -&gt; usd up -&gt; gold down</td>
-          <td class="mark"><span class="code">XAU-NFP-2610</span></td>
+          <td class="mark"></td>
         </tr>
         <tr class="ev">
           <td class="t">15:30</td><td class="imp" aria-label="high impact">III</td>
-          <td class="name">Unemployment Rate</td>
+          <td class="name">unemployment rate</td>
           <td class="n act tba">&ndash; &ndash;</td><td class="n">4.3%</td><td class="n">4.3%</td>
           <td class="book">above forecast -&gt; weak jobs -&gt; gold up</td>
-          <td class="mark"><span class="code">XAU-UNR-2610</span></td>
+          <td class="mark"></td>
         </tr>
         <tr class="ev">
           <td class="t">15:30</td><td class="imp" aria-label="high impact">III</td>
-          <td class="name">Average Hourly Earnings m/m</td>
+          <td class="name">average hourly earnings m/m</td>
           <td class="n act tba">&ndash; &ndash;</td><td class="n">0.3%</td><td class="n">0.4%</td>
           <td class="book">above forecast -&gt; inflation risk -&gt; gold down</td>
-          <td class="mark"><span class="code">XAU-AHE-2610</span></td>
+          <td class="mark"></td>
         </tr>
         <tr class="ev">
           <td class="t">19:30</td><td class="imp" aria-label="high impact">III</td>
-          <td class="name">Fed Chair Warsh Speaks</td>
+          <td class="name">fed chair warsh speaks</td>
           <td class="n act tba">&ndash; &ndash;</td><td class="n"></td><td class="n"></td>
           <td class="book">hawkish -&gt; gold down. dovish -&gt; gold up.</td>
-          <td class="mark"><span class="code">XAU-FEDC-2610</span></td>
+          <td class="mark"></td>
         </tr>
       </tbody>
     </table>
 
-    <div class="typed-rule" aria-hidden="true">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
     <p class="legend">III high. II medium. &#9650; &#9660; actual above or below forecast. &ndash; &ndash; not printed yet.<br>
-    the book: what the textbook says gold should do. it is usually right, which is the problem.</p>
+    the book: what the textbook says gold should do. it is right more often than not.<br>
+    sample week. the clock in the 17:00 row starts at wednesday 16:23 when you open this page.</p>
   </div>
 </section>
 
-<!-- ============ said / did ============ -->
+<!-- ============ what the book said, what gold did. copy 5 ============ -->
 <section class="said" aria-labelledby="said-title">
-  <h2 id="said-title" class="said-title">what the book said,<br>and what gold did.</h2>
-  <p class="said-note">three releases have printed this week.<br>cut out and kept.</p>
+  <h2 id="said-title" class="said-title">what the book said. what gold did.</h2>
 
   <figure class="bus">
-    <img src="img/bus-window.png" alt="a man on a bus looks back through a rain-streaked window, photocopied" width="1100" height="733">
-    <figcaption>route 3, pravda st. he read the book too.</figcaption>
+    <img src="img/bus.png" width="868" height="700" alt="a man on a city bus, cap pulled low, looking straight back through the window. photocopied until only the face is left.">
+    <figcaption class="vh">a passenger on route 3, pravda street</figcaption>
   </figure>
+  <p class="he">he read<br>the book too.</p>
 
   <ol class="strips">
     <li class="strip s1">
-      <p class="s-id"><span class="code">XAU-ISMM-2610</span> mon 19, 17:00. ism manufacturing pmi. 50.1 against 49.5.</p>
-      <p class="s-row"><span class="k">the book said</span> <span class="big">down</span> <span class="k">gold did</span> <span class="big">down</span> <span class="mv">&minus;9.40</span> <span class="verdict">right.</span></p>
+      <p class="s-id">mon 19, 17:00. ism manufacturing. 50.1 against 49.5.</p>
+      <p class="s-row"><span class="k">book</span> <span class="big">down</span> <span class="k">gold</span> <span class="big">down</span> <span class="mv">&minus;9.40</span></p>
     </li>
     <li class="strip s2">
-      <p class="s-id"><span class="code">XAU-JOLT-2610</span> tue 20, 17:00. jolts job openings. 7.44M against 7.20M.</p>
-      <p class="s-row"><span class="k">the book said</span> <span class="big wrong">down<svg class="pen" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M1,9 C40,6 80,11 120,7 S200,4 240,8.5 S288,6 299,5"/><path class="p2" d="M4,4 C70,10 150,12 296,10"/></svg></span> <span class="k">gold did</span> <span class="big">up</span> <span class="mv">+11.20</span> <span class="verdict">the book lied.</span></p>
+      <p class="s-id">tue 20, 17:00. jolts job openings. 7.44M against 7.20M.</p>
+      <p class="s-row"><span class="k">the book said</span> <span class="big wrong"><s>down</s><svg class="pen" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M1,9 C40,6 80,11 120,7 S200,4 240,8.5 S288,6 299,5"/></svg></span> <span class="k">gold did</span> <span class="big">up</span> <span class="mv">+11.20</span> <span class="verdict">the book lied.</span></p>
     </li>
     <li class="strip s3">
-      <p class="s-id"><span class="code">XAU-ADP-2610</span> wed 21, 15:15. adp non-farm employment change. 98K against 120K.</p>
-      <p class="s-row"><span class="k">the book said</span> <span class="big">up</span> <span class="k">gold did</span> <span class="big">up</span> <span class="mv">+6.10</span> <span class="verdict">right.</span></p>
+      <p class="s-id">wed 21, 15:15. adp non-farm employment change. 98K against 120K.</p>
+      <p class="s-row"><span class="k">the book said</span> <span class="big">up</span> <span class="k">gold did</span> <span class="big">up</span> <span class="mv">+6.10</span></p>
     </li>
   </ol>
-  <p class="score">two out of three. a coin would be jealous.</p>
+  <p class="score">it was right twice.<br>you will remember<br>the other time.</p>
 </section>
 
-<!-- ============ playbook ============ -->
+<!-- ============ the playbook, carbon copy. copy 6 ============ -->
 <section class="playbook" id="playbook" aria-labelledby="pb-title">
-  <img class="big1700" src="img/1700.png" alt="17:00" width="1360" height="889">
-  <figure class="pans">
-    <img src="img/pans.png" alt="gold pans on a window sill, halftone" width="600" height="656">
-    <figcaption>gold pans on a sill. tankavaara, 1977. waiting is most of the job.</figcaption>
-  </figure>
-
-  <article class="column">
-    <p class="col-kicker">the playbook, for the next one</p>
-    <h2 id="pb-title">ism services pmi</h2>
-    <p class="col-meta">wed 21 oct, 17:00 utc+3<br>forecast 52.0, previous 51.4<br>XAU-ISMS-2610</p>
-    <p class="col-count"><span data-countdown>t-00:37:00</span><span class="cur" aria-hidden="true"></span></p>
+  <img class="big1700" src="img/1700.png" width="1282" height="625" alt="17:00, typed, then enlarged on the copier until the ribbon shows">
+  <article class="carbon">
+    <h2 id="pb-title">ism services pmi. wed 21, 17:00 utc+3.</h2>
+    <p class="c-meta">forecast 52.0. previous 51.4.</p>
     <ol class="rules">
-      <li>above <span class="num">52.0</span>: the dollar firms up and gold goes down. that is the book.</li>
-      <li>below <span class="num">52.0</span>: gold goes up. also the book.</li>
-      <li><span class="num">51.9</span> to <span class="num">52.1</span>: the book has nothing to say. wait for the first fifteen-minute candle to close, then decide.</li>
-      <li>adp already came in weak today, <span class="num">98K</span> against <span class="num">120K</span>, and gold took <span class="num">+6.10</span> for it. some of the weakness is already in the price.</li>
-      <li>this week the book is two for three. it lied on tuesday, and it did not look sorry.</li>
+      <li>above 52.0: the dollar firms and gold goes down. that is the book.</li>
+      <li>below 52.0: gold goes up. also the book.</li>
+      <li>51.9 to 52.1: the book has nothing to say. wait for the first fifteen-minute candle to close.</li>
+      <li>adp came in weak today, 98K against 120K, and gold took +6.10 for it. some of that weakness is already in the price.</li>
+      <li>the book has been right twice this week. on tuesday it was not.</li>
     </ol>
-    <p class="col-foot">not advice. a sheet of paper.</p>
+    <p class="c-foot">not advice. a sheet of paper.</p>
   </article>
 </section>
+
+<!-- ============ a long stretch of nothing. copy 8 ============ -->
+<section class="quiet" aria-label="an interval">
+  <img class="ghost" src="img/ghost1700.png" width="1282" height="625" alt="">
+  <figure class="pans">
+    <img src="img/pans.png" width="454" height="573" alt="gold pans drying on a window sill, tankavaara, 1977, photocopied">
+    <figcaption>gold pans on a sill, tankavaara, 1977.<br>waiting is most of the job.</figcaption>
+  </figure>
+</section>
+
+<!-- ============ the end of the week. copy 11 ============ -->
+<footer class="end">
+  <figure class="tunnel">
+    <img src="img/tunnel.png" width="1052" height="619" alt="a dark passage; one small figure stands in a bright doorway at the end of it">
+    <figcaption class="door">friday.<br>three at 15:30,<br>warsh at 19:30.<br>then the week is over<br>and somebody copies<br>this sheet again.</figcaption>
+  </figure>
+  <p class="not-you">the figure in the doorway is not you. probably.</p>
+  <p class="credits">copy 11 of a sheet nobody owns. sample numbers, not advice. hiranya is sanskrit for gold. photographs from wikimedia commons: associated press, 1929, public domain; mikhail matvienko, cc by-sa 2.0; anja halla, 1977, cc by 4.0; boris thaser, cc by 2.0. the rest is in credits.md.</p>
+  <div class="late"><img src="img/late.png" width="1440" height="600" alt="hiranya again, copied eight more times"></div>
+</footer>
 </main>
 
-<!-- ============ the end of the week ============ -->
-<footer class="end">
-  <div class="tunnel">
-    <img src="img/tunnel.png" alt="a dark tunnel, one small figure walking out through a bright doorway" width="1440" height="1080">
-    <p class="end-voice">friday. three releases at 15:30, then warsh at 19:30.<br>
-    after that the week is over,<br>and somebody copies this sheet again.</p>
-    <p class="end-small">the figure in the doorway is not you. probably.</p>
-  </div>
-  <div class="colophon">
-    <img class="late" src="img/hiranya-late.png" alt="hiranya, copied too many times" width="900" height="518">
-    <div class="credits">
-      <p>copy no. 43 of a sheet nobody owns. sample numbers. nothing here is advice.</p>
-      <p>photographs from wikimedia commons: associated press, 1929, public domain. anja halla, 1977, cc by 4.0. mikhail matvienko, cc by-sa 2.0. boris thaser, cc by 2.0. marco van der haar, cc by 2.0. full list in credits.md.</p>
-      <p>set in courier prime, cousine, im fell english, tinos, anton and libre barcode 128 text. the barcode scans as XAU-ISMS-2610.</p>
-    </div>
-    <p class="tag tag-end">#xau/2610</p>
-  </div>
-</footer>
-
+</div>
 <script src="script.js"></script>
 </body>
 </html>
