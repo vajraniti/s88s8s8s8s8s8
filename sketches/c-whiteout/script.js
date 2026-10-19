@@ -57,6 +57,10 @@
     }
     var line = document.querySelector('[data-count-line]');
     if (line) line.textContent = '17:00, ism services printed ' + PRINTED + '.';
+    var early = document.querySelector('.early');
+    if (early) early.textContent = 'you were early.';
+    var voice = document.querySelector('.voice');
+    if (voice) voice.innerHTML = 'ism services printed ' + PRINTED + '. above the forecast.<br>i said i\u2019d tell you.';
     var tl = document.querySelector('.count .t');
     if (tl) tl.textContent = 'printed.';
     var wait = document.querySelector('[data-wait]');

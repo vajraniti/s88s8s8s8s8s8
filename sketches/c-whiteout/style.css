@@ -48,9 +48,9 @@ p { margin: 0; }
 }
 .kin {
   position: absolute;
-  left: 64%;
-  top: -6%;
-  height: 120%;
+  left: 66%;
+  top: 0;
+  height: 112%;
   width: auto;
   display: block;
   pointer-events: none;
@@ -58,7 +58,7 @@ p { margin: 0; }
 .mark {
   position: absolute;
   left: 2.5vw;
-  top: 5.6vw;
+  top: 9%;
   margin: 0;
   line-height: 0;
 }
@@ -66,7 +66,7 @@ p { margin: 0; }
 .gloss {
   position: absolute;
   left: 7.9vw;
-  top: 23.2vw;
+  top: 37.1%;
   font: italic 11.5px/1.4 var(--type);
   color: var(--ink-2);
   transform: rotate(-4deg);
@@ -76,7 +76,7 @@ p { margin: 0; }
 .early {
   position: absolute;
   left: 15.2vw;
-  top: 9.4vw;
+  top: 15%;
   font: 400 38px/1 var(--type);
   letter-spacing: -0.01em;
   color: var(--ink);
@@ -85,7 +85,7 @@ p { margin: 0; }
 .voice {
   position: absolute;
   left: 38.6vw;
-  top: 21.2vw;
+  top: 33.9%;
   font: 13px/1.6 var(--type);
   color: var(--ink);
   white-space: nowrap;
@@ -93,15 +93,16 @@ p { margin: 0; }
 .walkers {
   position: absolute;
   left: 26.8vw;
-  top: 58.3vw;
+  top: 93.3%;
   font: 12px/1.5 var(--type);
   color: var(--ink);
   white-space: nowrap;
 }
 .count {
   position: absolute;
-  left: 79vw;
-  top: 40.6vw;
+  /* sits inside the middle bar of 金: the glyph's left edge is 66% + 0.171 x hero height */
+  left: calc(66% + 0.171 * var(--hh) + 50px);
+  top: 62.7%;
   z-index: 2;
   font: 12px/1.55 var(--mono);
   color: var(--night-ink);
@@ -114,12 +115,15 @@ p { margin: 0; }
 .wire {
   position: absolute;
   left: 0;
-  top: calc(var(--hh) - 7.2vw);
+  top: calc(var(--hh) - 8.1vw);
   width: 100%;
   height: 22.23vw;
   z-index: 2;
   pointer-events: none;
   fill: #1b1e21;
+  stroke: #fff;            /* a thin edge of light, so the wire still shows where it crosses the black */
+  stroke-width: 1.4px;
+  paint-order: stroke;
   overflow: visible;
 }
 
@@ -127,7 +131,7 @@ p { margin: 0; }
 
 .log {
   position: relative;
-  padding: 18px 2.6vw 120px 8.4vw;
+  padding: 42px 2.6vw 120px 8.4vw;
 }
 .lede {
   position: relative;
@@ -135,7 +139,7 @@ p { margin: 0; }
   margin-left: 19.6vw;
   font: 14px/1.7 var(--type);
   color: var(--ink);
-  max-width: 560px;
+  max-width: 640px;
 }
 .lede p + p { color: var(--ink-2); }
 .lede .key { margin-top: 10px; font-size: 12.5px; }
@@ -284,8 +288,8 @@ table.cal {
 }
 .tally {
   position: relative;
-  height: 330px;
-  margin-top: -150px;
+  height: 290px;
+  margin-top: -170px;
 }
 .scratch {
   position: absolute;
@@ -317,8 +321,9 @@ table.cal {
 }
 .wait {
   position: absolute;
-  left: 62vw;
+  right: 5vw;
   top: 15vw;
+  white-space: nowrap;
   font: 400 24px/1.35 var(--type);
   color: #fff;
 }
@@ -330,7 +335,11 @@ table.cal {
   text-align: right;
 }
 
-/* ---------- narrower screens ---------- */
+/* ---------- wider and narrower screens ---------- */
+
+@media (min-width: 1600px) {
+  :root { --hh: 56vw; }
+}
 
 @media (max-width: 1180px) {
   .cal col.c-ev { width: 23%; }
@@ -343,14 +352,14 @@ table.cal {
 @media (max-width: 900px) {
   :root { --hh: max(118vw, 440px); }
   .scene { object-position: 18% 88%; }
-  .kin { left: 50%; top: -4%; height: 104%; }
+  .kin { left: 52%; top: -4%; height: 104%; }
   .mark { left: 12px; top: 14px; }
   .mark img { height: 120px; }
   .gloss, .count .clock { display: none; }
-  .early { left: 64px; top: 20px; font-size: 26px; }
-  .voice { left: 64px; top: 64px; font-size: 12px; white-space: normal; width: 52vw; }
+  .early { left: 72px; top: 22px; font-size: 26px; }
+  .voice { left: 64px; top: 64px; font-size: 12px; white-space: normal; width: 44vw; }
   .walkers { left: 16px; top: auto; bottom: 10px; }
-  .count { left: auto; right: 16px; top: 46%; text-align: right; }
+  .count { left: 64px; top: 34%; color: var(--ink); }
   .count .t { font-size: 18px; }
   .wire { top: calc(var(--hh) - 10vw); height: 30vw; }
   .log { padding: 26px 16px 80px; }
@@ -402,8 +411,10 @@ table.cal {
   .scratch { left: auto; right: 16px; width: 170px; height: 150px; }
   .tally-words { left: 16px; top: 170px; font-size: 13px; }
   .sunset img { height: 520px; object-fit: cover; object-position: 34% 50%; }
-  .last { left: 16px; top: 24px; right: 16px; font-size: 13px; }
+  .sunset { display: flex; flex-direction: column; }
+  .sunset img { order: 3; }
+  .last { position: static; padding: 0 16px 28px; font-size: 13px; }
   .last br { display: none; }
-  .wait { left: 16px; top: auto; bottom: 28px; font-size: 18px; }
+  .wait { position: static; padding: 0 16px 8px; font-size: 18px; white-space: normal; }
   .fine { margin: 24px 16px 0; text-align: left; }
 }
