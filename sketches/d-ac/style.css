@@ -1,10 +1,9 @@
-/* hiranya, sketch D: A's fog on top, C's page and C's night underneath.
-   the fog photo's ground is dragged sideways (A) and, instead of falling into the dark, burns out
-   into the white page (C). the week sits on that white. at the frost line the page goes under
-   the ice. one typeface, Cormorant Garamond, roman only. the only colour is the red pencil on tuesday. */
+/* hiranya: the fog on top, the page in the middle, the night underneath.
+   the fog photo's ground is dragged sideways, fog comes down over it and the page takes the fog.
+   the week sits on that white. at the frost line the page goes under the ice.
+   one typeface, Cormorant Garamond, roman only, lining figures everywhere. */
 
 :root {
-  --fog: #eeede9;
   --paper: #fff;
   --ink: #121314;
   --ink-2: #3a3f44;      /* 10.6:1 on white */
@@ -14,7 +13,6 @@
   --night: #000;
   --night-ink: #e9e9e6;
   --night-2: #a5a5a2;    /* 8.6:1 on black */
-  --pencil: #a3261c;
   --serif: "Cormorant Garamond", Garamond, "Times New Roman", serif;
   --fh: clamp(700px, 92.58vw, 1445px);   /* the fog: A's 82vw, plus the longer burn-out */
   --th: min(42vw, calc(var(--fh) * .4537));   /* height of one toner glyph cell */
@@ -30,6 +28,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font: 500 18px/1.45 var(--serif);
+  font-variant-numeric: lining-nums;
   -webkit-font-smoothing: antialiased;
 }
 /* no italics anywhere, not even the browser's own */
@@ -69,7 +68,7 @@ a { color: inherit; }
 }
 .goldline path { fill: none; stroke: #fff; stroke-width: 1.3; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
 .xau-from, .xau-now {
-  position: absolute; font-size: 13px; font-weight: 600; line-height: 1; color: #fff;
+  position: absolute; font-size: 16px; font-weight: 600; line-height: 1; color: #fff;
   mix-blend-mode: difference; white-space: nowrap;
   font-variant-numeric: lining-nums;
 }
@@ -84,15 +83,14 @@ a { color: inherit; }
 .side, .stamp-time {
   position: absolute; z-index: 4;
   writing-mode: vertical-rl;
-  font-size: 13.5px; font-weight: 600; letter-spacing: .02em; line-height: 1;
-  font-variant-numeric: lining-nums;
+  font-size: 16px; font-weight: 600; letter-spacing: .01em; line-height: 1;
 }
 .side { left: 1.5vw; top: 96px; color: #46443f; }
-.stamp-time { left: max(17.4vw, 190px); top: 22px; transform: rotate(180deg); color: #4f4d48; }
+.stamp-time { left: max(17.4vw, 190px); top: 22px; transform: rotate(180deg); color: #46443f; }
 
 .lost {
   position: absolute; z-index: 4;
-  left: 7.6vw; top: 42%;
+  left: 7.6vw; top: 34.5%;
   width: min(440px, 36vw);
   font-size: 24px; line-height: 1.3; color: #1d1c1a;
 }
@@ -100,19 +98,12 @@ a { color: inherit; }
 .lost .gone { margin-top: 1.1em; font-size: 17.5px; font-weight: 600; color: #2e2d2a; }
 .lost .count { margin-top: 1.5em; font-size: 19px; font-weight: 600; color: #141312; }
 .count [data-countdown] { font-variant-numeric: tabular-nums lining-nums; }
-.cursor {
-  display: inline-block; width: .5em; height: .95em; margin-left: 4px;
-  vertical-align: -.12em; background: currentColor;
-  animation: blink 1.06s steps(1, end) infinite;
-}
-@keyframes blink { 50% { opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
 
-/* the big time: dark toner now. its top is eaten by the fog (a mask cut from the fog photo),
-   its body stands on the burnt-out ground, its foot is already on the page. */
+/* the big time: dark toner. the fog thins its top to grain (a mask cut from the fog photo),
+   its body stands on the dragged ground, its foot is already on the page. */
 .bigtime {
   position: absolute; z-index: 5;
-  left: 13.2vw; top: 55%;
+  left: 13.2vw; top: 47.5%;
   font-size: var(--th);
   width: 0.9645em; height: 1em;
   mix-blend-mode: multiply;
@@ -125,15 +116,15 @@ a { color: inherit; }
 .bigtime-cap {
   position: absolute; z-index: 5;
   left: calc(13.2vw + var(--th) * 0.02);
-  top: calc(55% + var(--th) * 1.0 + 6px);
-  font-size: 14px; font-weight: 600; line-height: 1.45; color: var(--ink-2);
+  top: calc(47.5% + var(--th) * 1.0 + 4px);
+  font-size: 16px; font-weight: 600; line-height: 1.4; color: var(--ink-2);
   white-space: nowrap;
 }
 
 /* ---------------------------------------------------------------- the week */
 .week {
   position: relative; z-index: 2;
-  margin-top: -170px;
+  margin-top: -250px;
   padding: 0 28px 150px max(92px, 7vw);
 }
 .intro {
@@ -153,14 +144,14 @@ a { color: inherit; }
   margin-top: 150px;
   border-collapse: collapse; table-layout: fixed;
 }
-.c-time { width: 68px; } .c-imp { width: 50px; }
-.c-num { width: 86px; } .c-gold { width: 124px; }
+.c-time { width: 68px; } .c-imp { width: 60px; }
+.c-num { width: 84px; } .c-gold { width: 116px; }
 .c-book { width: 318px; } .c-aside { width: 190px; }
 
 .cal th, .cal td { text-align: left; vertical-align: top; font-weight: 500; }
 .cal thead th {
   padding: 0 0 10px;
-  font-size: 14px; font-weight: 600; letter-spacing: .02em; color: var(--ink-3);
+  font-size: 16px; font-weight: 600; letter-spacing: .01em; color: var(--ink-3);
   border-bottom: 1px solid var(--ink);
 }
 .cal thead th.n { text-align: right; }
@@ -172,7 +163,7 @@ a { color: inherit; }
 .cal td.evn { font-size: 19px; line-height: 1.25; padding-right: 18px; }
 .evn small {
   display: block; margin-top: 5px;
-  font-size: 12.5px; font-weight: 600; letter-spacing: .06em; color: var(--ink-3);
+  font-size: 14px; font-weight: 600; letter-spacing: .05em; color: var(--ink-3);
   font-variant-numeric: tabular-nums lining-nums;
 }
 .cal td.n {
@@ -187,7 +178,9 @@ a { color: inherit; }
 .mv { display: inline-block; width: .46em; height: .46em; margin-right: .38em; vertical-align: .08em; fill: currentColor; }
 .cal td.bk, .cal thead th.bk { padding-left: 26px; }
 .rule { display: block; font-size: 17px; line-height: 1.35; color: #24282c; }
-.vd { display: block; margin-top: 4px; font-size: 15px; color: var(--ink-3); }
+.vd { display: block; margin-top: 4px; font-size: 16px; color: var(--ink-3); }
+.nb { white-space: nowrap; }
+.ar { display: inline-block; width: .98em; height: .56em; margin: 0 .1em 0 .02em; vertical-align: .08em; fill: currentColor; }
 .lie { display: block; margin-top: 3px; font-size: 19px; font-weight: 700; color: var(--ink); }
 
 /* the right margin: C's notes, quiet, outside the grid's rules */
@@ -208,6 +201,13 @@ a { color: inherit; }
   font-variant-numeric: tabular-nums lining-nums;
   vertical-align: baseline;
 }
+.dnum.toner {
+  display: inline-block; position: relative;
+  height: var(--dh, 104px); font-size: var(--dh, 104px);
+  vertical-align: bottom; margin: -6px 0 -2px -.02em;
+}
+.dnum.toner img { position: absolute; top: 0; height: 1em; max-width: none; }
+.cal .dayrow th:has(.toner) { padding-top: 40px; padding-bottom: 6px; }
 .dname { margin-left: 10px; font-size: 17px; font-weight: 600; color: var(--ink-2); }
 .dnote { margin-left: 18px; font-size: 18px; font-weight: 500; color: var(--ink-2); }
 
@@ -218,7 +218,7 @@ a { color: inherit; }
   text-decoration: none;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 330 18' preserveAspectRatio='none'%3E%3Cg fill='%23a3261c'%3E%3Cpath d='M1.0 12.1 L5.7 11.7 L10.4 10.7 L15.1 10.1 L19.8 9.8 L24.6 10.0 L29.3 10.0 L34.0 9.7 L38.7 10.1 L43.4 9.7 L48.1 9.3 L52.8 9.6 L57.5 9.4 L62.2 9.5 L66.9 9.3 L71.7 9.3 L76.4 8.9 L81.1 9.2 L85.8 9.3 L90.5 8.9 L95.2 8.7 L99.9 8.9 L104.6 8.9 L109.3 8.7 L114.0 8.4 L118.8 8.4 L123.5 8.3 L128.2 8.5 L132.9 8.2 L137.6 7.9 L142.3 7.9 L147.0 7.9 L151.7 7.5 L156.4 7.5 L161.1 7.5 L165.9 7.4 L170.6 7.0 L175.3 7.1 L180.0 6.9 L184.7 6.6 L189.4 6.7 L194.1 6.6 L198.8 6.7 L203.5 6.3 L208.2 6.2 L213.0 6.2 L217.7 5.9 L222.4 6.0 L227.1 5.9 L231.8 5.7 L236.5 5.5 L241.2 5.5 L245.9 5.3 L250.6 5.2 L255.3 4.9 L260.1 4.8 L264.8 4.6 L269.5 4.7 L274.2 4.3 L278.9 4.3 L283.6 4.1 L288.3 3.8 L293.0 3.8 L297.7 3.6 L302.4 3.4 L307.2 3.7 L311.9 3.7 L316.6 3.8 L321.3 4.0 L326.0 4.0 L326.0 4.4 L321.3 4.6 L316.6 5.0 L311.9 5.4 L307.2 5.7 L302.4 6.3 L297.7 6.4 L293.0 6.5 L288.3 6.9 L283.6 7.0 L278.9 7.0 L274.2 7.3 L269.5 7.2 L264.8 7.7 L260.1 7.7 L255.3 8.0 L250.6 8.1 L245.9 8.2 L241.2 8.3 L236.5 8.6 L231.8 8.7 L227.1 8.8 L222.4 9.0 L217.7 9.3 L213.0 9.3 L208.2 9.5 L203.5 9.7 L198.8 9.7 L194.1 9.9 L189.4 10.2 L184.7 10.5 L180.0 10.4 L175.3 10.5 L170.6 10.8 L165.9 10.8 L161.1 11.0 L156.4 11.4 L151.7 11.4 L147.0 11.4 L142.3 11.6 L137.6 11.8 L132.9 11.8 L128.2 11.7 L123.5 12.1 L118.8 12.2 L114.0 12.4 L109.3 12.4 L104.6 12.4 L99.9 12.7 L95.2 13.1 L90.5 13.0 L85.8 12.7 L81.1 13.1 L76.4 13.5 L71.7 13.4 L66.9 13.5 L62.2 13.5 L57.5 13.8 L52.8 13.9 L48.1 14.3 L43.4 14.0 L38.7 13.7 L34.0 14.3 L29.3 14.2 L24.6 14.3 L19.8 14.6 L15.1 14.6 L10.4 14.2 L5.7 13.4 L1.0 13.1Z'/%3E%3Cpath d='M326.0 4.4 L325.3 4.0 L324.5 4.3 L323.8 4.5 L323.1 4.9 L322.4 5.1 L321.6 5.5 L320.9 5.6 L320.2 6.0 L319.5 6.4 L318.7 6.6 L318.0 7.5 L318.0 7.7 L318.7 8.0 L319.5 7.7 L320.2 7.5 L320.9 7.4 L321.6 7.0 L322.4 6.9 L323.1 6.5 L323.8 6.3 L324.5 6.0 L325.3 5.8 L326.0 4.8Z'/%3E%3Cpath d='M319.0 7.2 L315.9 7.0 L312.8 6.7 L309.8 6.7 L306.7 6.8 L303.6 6.6 L300.5 6.7 L297.4 6.6 L294.3 6.8 L291.3 6.8 L288.2 6.9 L285.1 6.9 L282.0 6.9 L278.9 7.1 L275.9 7.1 L272.8 7.1 L269.7 7.2 L266.6 7.2 L263.5 7.3 L260.4 7.4 L257.4 7.5 L254.3 7.5 L251.2 7.6 L248.1 7.7 L245.0 7.6 L242.0 7.7 L238.9 7.9 L235.8 8.0 L232.7 8.1 L229.6 8.2 L226.6 8.3 L223.5 8.4 L220.4 8.4 L217.3 8.5 L214.2 8.5 L211.1 8.6 L208.1 8.7 L205.0 8.8 L201.9 8.8 L198.8 8.9 L195.7 9.0 L192.7 9.1 L189.6 9.3 L186.5 9.4 L183.4 9.4 L180.3 9.5 L177.2 9.7 L174.2 9.9 L171.1 10.1 L168.0 10.3 L168.0 10.4 L171.1 10.3 L174.2 10.3 L177.2 10.4 L180.3 10.3 L183.4 10.3 L186.5 10.1 L189.6 10.2 L192.7 10.1 L195.7 10.0 L198.8 9.8 L201.9 9.8 L205.0 9.8 L208.1 9.6 L211.1 9.6 L214.2 9.5 L217.3 9.5 L220.4 9.4 L223.5 9.4 L226.6 9.4 L229.6 9.3 L232.7 9.2 L235.8 9.2 L238.9 9.0 L242.0 9.0 L245.0 9.0 L248.1 8.9 L251.2 8.9 L254.3 8.8 L257.4 8.7 L260.4 8.7 L263.5 8.7 L266.6 8.6 L269.7 8.6 L272.8 8.6 L275.9 8.5 L278.9 8.4 L282.0 8.5 L285.1 8.4 L288.2 8.4 L291.3 8.4 L294.3 8.1 L297.4 8.4 L300.5 8.3 L303.6 8.3 L306.7 8.3 L309.8 8.3 L312.8 8.3 L315.9 7.9 L319.0 7.6Z'/%3E%3C/g%3E%3C/svg%3E") 0 58% / 100% 1.05em no-repeat;
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
-  padding: 0 4px 0 1px; margin: 0 -4px 0 -1px;
+  padding: 0 13px 0 1px; margin: 0 -13px 0 -1px;
 }
 
 /* now */
@@ -233,25 +233,30 @@ a { color: inherit; }
 }
 
 /* next */
-.cal tr.next td { padding-top: 18px; border-bottom: 0; }
+.cal tr.next td { padding-top: 18px; }
+.cal tr.next:has(+ tr.playbook) td { border-bottom: 0; }
 .cal tr.next td.t { font-weight: 700; }
 .cal tr.next td.aside { color: var(--ink); font-weight: 600; }
 .cal tr.playbook td { padding: 4px 0 36px; }
 .cal tr.playbook td.aside { border-bottom: 0; }
-.pb { display: grid; grid-template-columns: 112px 14px minmax(0, 660px); column-gap: 12px; align-items: start; }
-.bracket { grid-column: 2; width: 14px; height: 100%; min-height: 150px; fill: var(--ink); }
-.pb ol {
-  grid-column: 3;
-  margin: 0; padding: 3px 0 0 1.5em;
+.pb { display: grid; grid-template-columns: 112px 14px minmax(0, 640px); column-gap: 14px; align-items: baseline; padding-top: 4px; }
+.bracket { grid-column: 2; grid-row: 1 / span 5; align-self: stretch; width: 14px; height: 100%; min-height: 150px; fill: var(--ink); }
+.pb dl { display: contents; }
+.pb dt {
+  grid-column: 1; text-align: right;
+  font-size: 17px; font-weight: 600; line-height: 1.3; color: var(--ink-2);
+}
+.pb dd {
+  grid-column: 3; margin: 0;
   font-size: 19.5px; line-height: 1.42; color: var(--ink);
 }
-.pb li { padding-left: .3em; }
-.pb li + li { margin-top: .18em; }
-.pb li::marker { font-size: 14px; font-weight: 600; color: var(--ink-3); font-variant-numeric: tabular-nums lining-nums; }
-.fig { font-weight: 700; font-variant-numeric: tabular-nums lining-nums; }
+.pb dt:not(:first-of-type), .pb dd:not(:first-of-type) { margin-top: .35em; }
+.fig { font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums lining-nums; }
 .u { position: relative; white-space: nowrap; }
 .u svg { position: absolute; left: 0; bottom: -3px; width: 100%; height: 6px; fill: var(--ink); }
-.cal tr.playbook.spent .pb { opacity: .55; }
+/* a playbook whose release came and went: greyed, but still readable (AA) */
+.cal tr.playbook.spent .pb dt, .cal tr.playbook.spent .pb dd, .cal tr.playbook.spent .fig { color: var(--ink-3); }
+.cal tr.playbook.spent .bracket, .cal tr.playbook.spent .u svg { fill: var(--ink-3); }
 
 /* still to come */
 .later td { color: #2b2f33; }
@@ -281,35 +286,30 @@ a { color: inherit; }
   fill: #f1f1ef; overflow: visible;
 }
 .tally-words {
-  position: absolute; left: 41vw; top: 9.4vw;
-  font-size: 20px; line-height: 1.45; color: var(--night-ink);
+  position: absolute; left: 38vw; top: 9.4vw;
+  font-size: clamp(18px, 1.39vw, 27px); line-height: 1.45; color: var(--night-ink);
 }
 .tally-words .dim { color: var(--night-2); }
 
 .sunset { position: relative; }
 .sun { position: relative; z-index: 1; width: 100%; height: auto; }
 
-/* 金, white, cut by the left edge (the word up top runs off the right one). it grows out of the
-   ice, and its drifting foot stands on the horizon the sun goes down into, right beside the sun:
-   the horizon sits at 88.6% of the photo, the foot at 96.2% of the glyph. */
+/* 金, white (A's fog tone, so the sun stays the only paper white), cut a little by the left edge
+   (the word up top runs off the right one). it hangs from the ice, and its drifting foot stands on
+   the horizon the sun goes down into, right beside the sun: the horizon sits at 88.6% of the photo,
+   the foot at 96.2% of the glyph. */
 .kin-wrap {
-  --kh: 68.7vw;
+  --kh: 66vw;
   position: absolute; z-index: 2;
   height: var(--kh); width: calc(var(--kh) * 750 / 1310);
-  left: -10.8vw;
+  left: -8.4vw;
   top: calc(43.06vw - var(--kh) * 0.962);
   pointer-events: none;
 }
 .kin { width: 100%; height: 100%; }
-/* the countdown sits in the middle bar of 金 again, as in C's top, but black on white now */
-.kin-count {
-  position: absolute; left: 41%; top: 54.4%;
-  font-size: calc(var(--kh) * .033); font-weight: 600; line-height: 1;
-  color: #000; white-space: nowrap;
-}
 .last {
-  position: absolute; z-index: 3; left: 41vw; top: 3.4vw;
-  font-size: 19px; line-height: 1.5; color: var(--night-ink);
+  position: absolute; z-index: 3; left: 38vw; top: 3.4vw;
+  font-size: clamp(18px, 1.32vw, 25px); line-height: 1.5; color: var(--night-ink);
 }
 .wait {
   position: absolute; z-index: 3; left: 61vw; top: 15vw;
@@ -320,16 +320,16 @@ a { color: inherit; }
   position: relative; z-index: 3;
   max-width: min(560px, 35vw);
   margin: 0 0 0 61vw; padding: 30px 0 64px;
-  font-size: 15px; line-height: 1.55; color: var(--night-2);
+  font-size: clamp(16px, 1.08vw, 20px); line-height: 1.55; color: var(--night-2);
 }
 .fine p + p { margin-top: .7em; }
 
 /* ---------------------------------------------------------------- narrower desktops */
 @media (max-width: 1380px) {
-  .c-time { width: 70px; } .c-imp { width: 50px; }
-  .c-num { width: 86px; } .c-gold { width: 120px; }
-  .c-book { width: 288px; } .c-aside { width: 168px; }
-  .cal td.aside, .cal thead th.aside { padding-left: 26px; font-size: 15.5px; }
+  .c-time { width: 68px; } .c-imp { width: 60px; }
+  .c-num { width: 84px; } .c-gold { width: 114px; }
+  .c-book { width: 290px; } .c-aside { width: 168px; }
+  .cal td.aside, .cal thead th.aside { padding-left: 24px; font-size: 16px; }
   .rule { font-size: 16.5px; }
 }
 @media (max-width: 1180px) {
