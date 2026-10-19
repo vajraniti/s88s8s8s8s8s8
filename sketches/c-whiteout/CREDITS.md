@@ -5,15 +5,25 @@ downloaded (Commons thumbnails: 1920px for the skiers, 1280px for the other two)
 `img/` that comes from a photograph is my own processing of it with numpy, Pillow and ImageMagick.
 Each image gets its own treatment, and none of them uses a dither screen:
 
-- **hero** (`img/whiteout.jpg`): flipped left to right, then cropped so the skiers sit low in the left
-  third. The trees are fogged to pale grey and the snow is blown to paper white. The sky stays a pale
-  grey so the photo's own sundog (found in its Lab chroma) can be burned in as pure white with a soft
-  bloom. There is extra glare where the hidden sun is, and halation over the tree edges. The skiers are
-  masked and protected, so they stay the darkest thing in the photo. Continuous tone.
-- **frost line** (`img/frost-line.png`): red channel only, so the warm haze goes white and the blue
-  snow goes black. Local contrast lifts the crystals, everything above the wire is blown out, and the
-  snow below is burned to black. Then three photocopier generations (blur, clumped noise, threshold).
-  Two tones.
+- **hero** (`img/whiteout.jpg`): flipped left to right and cropped wide (source x 200-1920,
+  y 330-1405, kept at 1720x1075) so the sky holds the photo's own halo arc and the skiers sit low,
+  about a third in from the left. The arc was measured from the pixels, not drawn: a red-minus-blue
+  ridge on a circle round the hidden sun (centre about 1760, 752 in the flipped source, radius about
+  1205 px, steady over 186-206 degrees). That ridge is burned to white with an uneven width and
+  brightness along its length. The sky inside it is held a little darker, the way it is inside a real
+  halo, so the ring can show. The sundog (a vertical bright smear between the trees) is lifted. The
+  trees are fogged to ghosts, more so on the left where the wordmark sits. The snow is blown to paper.
+  There is glare where the hidden sun is (behind 金). The skiers are masked and protected, so they
+  stay the darkest pixels in the frame. One horizontal smear pass runs across the snow line (blowing
+  snow), and the bottom drifts into the page. Continuous tone.
+- **frost line** (`img/frost-line.png`): cropped to the wire (source x 160-1120, y 280-580) and
+  enlarged 1.5x. It is copied on local contrast (the photo minus its own blur), so flat haze and flat
+  snow go to paper and only the crystal edges print. The real wire is mostly buried in ice in the
+  photo, so the copier takes what is darker than the frost on its row and closes it along its straight
+  path. It prints as one hard black line with a few breaks where the ice covers it, with a lit gap
+  under it. The snow under the frost burns to black. Then three copier generations (blur, clumped
+  noise, threshold), and the whole strip is tilted 1.2 degrees so the wire is not a ruled line. Two
+  tones.
 - **after sunset** (`img/after-sunset.jpg`): the red/luma mix crushed so the sky is night and the sun
   is the only white. The sun's core is blown and burned a little wider, then the image is re-saved as
   a low-quality JPEG five times so the 8x8 blocks show in the glow. Blacks are put back to true black.
@@ -45,7 +55,9 @@ above. The other two processed images are public domain. The page footer points 
   then given two blur-and-threshold bleed passes. Rotated to read bottom to top.
 - the wire (inline SVG in `index.html`): hand-plotted filled outlines with tremor and pressure. It sags
   across the snow, gets caught on the stem of 金 and is pulled once around it. A second strand has
-  snapped and hangs. The barbs are little twists, each one different.
+  snapped: it sags out of the photo and hangs beside the lede, and its cut end frays into one curled
+  hair and a stub. The barbs are little twists, each one different. The real wire, photographed, comes
+  back at the frost line.
 - the red pencil through tuesday's textbook line (inline SVG): one heavy pass that tapers, plus a
   lighter return stroke, in #a3261c. This is the only colour on the page.
 - the impact strokes (inline SVG, one drawn for each row: two strokes for high, one for medium) and
