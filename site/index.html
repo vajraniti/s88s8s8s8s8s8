@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hiranya</title>
+<meta name="description" content="the usd releases that move gold this week, in utc+3: the number, the forecast, what the textbook says and what gold did. it starts in fog, clears into the week, and goes under the ice after sunset.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- the fog. the ground under the word is dragged sideways and burns out into the page. -->
+<header class="fog">
+  <img class="fog-photo" src="img/hero.png" width="1920" height="1400" alt="">
+  <div class="mark">
+    <h1><img src="img/hiranya.png" width="1200" height="1452" alt="hiranya"></h1>
+    <!-- gold this week, monday 00:00 to now, drawn across the word from data.json -->
+    <svg class="goldline" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"><path data-goldline d=""/></svg>
+    <p class="xau-from" aria-hidden="true" hidden>xau, mon 00:00</p>
+    <p class="xau-now" aria-hidden="true" data-xau-now hidden><span></span></p>
+  </div>
+  <img class="fog-front" src="img/hero-front.png" width="1920" height="1400" alt="">
+
+  <p class="gloss">hiranya: sanskrit, gold.</p>
+  <p class="side">usd releases that move gold, week <span data-week-no></span></p>
+  <p class="stamp-time" aria-hidden="true"><span data-clock-long></span> utc+3</p>
+
+  <div class="lost">
+    <p data-voice-early></p>
+    <p data-voice-printed></p>
+    <p class="gone" data-gone hidden></p>
+    <p class="count" data-count></p>
+  </div>
+
+  <!-- the next release time, set in loose copier glyphs (img/t/) -->
+  <div class="bigtime" data-bigtime role="img" aria-label=""></div>
+  <p class="bigtime-cap tnum" data-bigtime-cap></p>
+</header>
+
+<main class="week">
+  <div class="intro">
+    <h2 data-week-title>this week</h2>
+    <p>usd releases that move gold, high and medium impact. times are utc+3.</p>
+    <p>three strokes: it can move gold hard. two strokes: it can move it a little.</p>
+    <p>“the book” is the textbook reading. it is not advice.</p>
+  </div>
+
+  <div class="cal-wrap">
+    <table class="cal">
+      <caption class="sr">usd economic calendar for gold this week, times in utc+3: impact, actual, forecast, previous, what gold did in dollars per ounce in the hour after, and the textbook rule for each release.</caption>
+      <colgroup>
+        <col class="c-time"><col class="c-imp"><col class="c-ev"><col class="c-num"><col class="c-num"><col class="c-num"><col class="c-gold"><col class="c-book"><col class="c-aside">
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">time</th>
+          <th scope="col">impact</th>
+          <th scope="col">event</th>
+          <th scope="col" class="n">actual</th>
+          <th scope="col" class="n">forecast</th>
+          <th scope="col" class="n">previous</th>
+          <th scope="col" class="n g">gold, $/oz</th>
+          <th scope="col" class="bk">the book</th>
+          <th scope="col" class="aside"><span class="sr">notes</span></th>
+        </tr>
+      </thead>
+      <!-- one tbody per day, written by script.js from data.json -->
+    </table>
+  </div>
+  <p class="empty" data-empty hidden>nothing on the calendar this week. the fog is all there is.</p>
+  <noscript><p class="empty">the week is written in by javascript. without it there is only the fog.</p></noscript>
+</main>
+
+<!-- the page goes under at the frost line and stays dark. 金 stands on the same horizon as the sun. -->
+<section class="night" aria-label="the week so far, and the end">
+  <img class="frost" src="img/frost-line.png" width="1440" height="450"
+       alt="a wire furred with hoarfrost, copied until only black and white are left: one hard black line with ice standing on it and hanging from it. above it the page is white, below it everything is dark.">
+
+  <div class="scratched">
+    <svg class="scratch" data-scratch viewBox="0 0 300 260" role="img" aria-label="" hidden><path d=""/></svg>
+    <div class="tally-words">
+      <p data-book-right></p>
+      <p data-book-lied></p>
+      <p class="dim" data-weekday-line></p>
+    </div>
+  </div>
+
+  <div class="sunset">
+    <img class="sun" src="img/after-sunset.jpg" width="1440" height="700"
+         alt="after sunset: the sky over a low ridge gone almost black, the sun a white hole at the horizon.">
+    <div class="kin-wrap">
+      <img class="kin" src="img/kin-white.png" width="750" height="1310"
+           alt="金, the character for gold, white and worn like a bad photocopy, hanging from the ice at the left edge, its foot on the horizon beside the sun.">
+    </div>
+    <p class="last" data-last></p>
+    <p class="wait" data-wait></p>
+  </div>
+
+  <footer class="fine">
+    <p>not advice. the book is the textbook, and the textbook is often wrong.</p>
+    <p>the calendar, forecasts and previous figures: forex factory. the numbers: fred, st. louis fed, worked out from the published series, so now and then a tenth off the headline. ism, s&amp;p, michigan and conference board numbers are in no free feed and stay blank. gold: comex futures (gc=f) via yahoo finance, the hour after each release. updated <span data-updated>–</span>.</p>
+    <p>photographs from wikimedia commons: the fog by yuri samoylov (cc by-sa 4.0), the frost by w.carter (cc by-sa 4.0), the sunset by blm alaska (public domain). the rest is in <a href="https://github.com/vajraniti/s88s8s8s8s8s8/blob/sssss8s8s8/site/CREDITS.md">credits</a>.</p>
+  </footer>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

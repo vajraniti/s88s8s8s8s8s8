@@ -1,0 +1,7 @@
+# built by .github/workflows/site.yml on every run
+site/data.json
+site/sample*.json
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

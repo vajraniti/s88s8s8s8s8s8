@@ -1,0 +1,61 @@
+# builds the week's data (calendar, fred, gold) and publishes site/ to github pages.
+# runs on every push, every ten minutes, and by hand from the actions tab.
+name: site
+
+on:
+  push:
+    branches: [sssss8s8s8]
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# one deploy at a time; a newer run waits instead of cancelling a deploy half-way
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      skip: ${{ steps.data.outputs.skip }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: check
+        if: github.event_name == 'push'
+        run: |
+          pip install --quiet pytest
+          python -m pytest -q
+      # when the calendar feed is unreachable the published site stays as it is (skip=true);
+      # when fred or the gold chart is, the last published numbers are kept
+      - name: build the week
+        id: data
+        run: >-
+          python scripts/build_data.py --out site/data.json --soft
+          --previous https://vajraniti.github.io/s88s8s8s8s8s8/data.json
+      - if: steps.data.outputs.skip != 'true'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.skip != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
