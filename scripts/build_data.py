@@ -5,7 +5,7 @@ Sources, all free and keyless:
   - actual numbers: FRED (St. Louis Fed) public CSV downloads
   - gold: COMEX gold futures (GC=F), 5-minute bars from Yahoo Finance's chart endpoint
 
-Usage: python scripts/build_data.py --out site/data.json
+Usage: python scripts/build_data.py --out docs/data.json
 """
 
 from __future__ import annotations

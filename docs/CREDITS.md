@@ -56,6 +56,11 @@ What was done to them:
   the tally scratched into the night (one mark per call the book made, the lies crossed out). The
   "you are here" line, the playbook bracket and the underline were drawn once for the sketches and are
   reused as they are. The red pencil through a textbook line that lied is the only colour on the page.
+- the eight-rayed star: `icon.svg` for the tab, drawn on a 16-unit grid centred on a pixel's centre so
+  the upright and level rays land on whole pixels; it turns #e9e9e6 on a dark tab. `favicon.ico` is the
+  same star at 16, 32 and 48 px with a pale rim, for browsers that skip svg icons.
+  `apple-touch-icon.png` is the night's version: the star in #e9e9e6 on black, its edges eaten by toner
+  grain, the top ray thinned by the fog, a few rows of the lower rays dragged to the right.
 
 ## data
 
