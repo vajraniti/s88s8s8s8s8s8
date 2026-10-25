@@ -167,23 +167,29 @@
     if (pts.length < 2) { path.setAttribute('d', ''); now.hidden = true; from.hidden = true; return; }
     var lo = Infinity, hi = -Infinity;
     pts.forEach(function (p) { lo = Math.min(lo, p[1]); hi = Math.max(hi, p[1]); });
-    var span = Math.max(hi - lo, 1), r = seeded('gold' + DATA.week.start), d = '', last = null, X = 0, Y = 0;
+    // a quiet hour stays quiet: less than half a percent of the price is never stretched over the
+    // whole band, it sits flat in the middle of it (an hour into monday is a few dollars, not a cliff)
+    var span = Math.max(hi - lo, hi * 0.005);
+    lo = (hi + lo - span) / 2;
+    // the band runs through the body of the letters, above the grass (25% to 35% of the word's height)
+    var r = seeded('gold' + DATA.week.start), d = '', last = null, X = 0, Y = 0;
     pts.forEach(function (p) {
       var ms = p[0] * 1000;
       X = 30 + (ms - WEEK0) / (5 * DAY) * 940 + gauss(r, 0.35);
-      Y = 560 - (p[1] - lo) / span * 170 + gauss(r, 0.9);
+      Y = 500 - (p[1] - lo) / span * 100 + gauss(r, 0.6);
       // the pen lifts where the market was shut
       d += (last === null || ms - last > 2 * 3600e3 ? ' M' : ' L') + X.toFixed(1) + ',' + Y.toFixed(1);
       last = ms;
     });
     path.setAttribute('d', d.trim());
-    var y0 = 560 - (pts[0][1] - lo) / span * 170;
+    var y0 = 500 - (pts[0][1] - lo) / span * 100;
     from.hidden = false;
     from.style.left = ((30 + (pts[0][0] * 1000 - WEEK0) / (5 * DAY) * 940) / 10).toFixed(2) + '%';
     from.style.top = (-15 + y0 / 10).toFixed(2) + '%';
     now.hidden = false;
     now.style.left = (X / 10).toFixed(2) + '%';
     now.style.top = (-15 + Y / 10).toFixed(2) + '%';
+    now.classList.toggle('flip', X > 820);   // friday's tag would run off the page
     now.querySelector('span').textContent = pts[pts.length - 1][1].toFixed(1);
   }
 
