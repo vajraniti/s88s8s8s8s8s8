@@ -52,7 +52,7 @@ What was done to them:
   only paper white.
 - hand-plotted SVG, drawn by `script.js` with a small seeded wobble so each mark stays put between
   redraws: the impact strokes (three for high, two for medium), the arrows in the book's rules, the
-  triangles for gold's move, the gold line through the word (this week's gold from monday 00:00), and
+  triangles for gold's move, the gold line in the sky over the word (this week's gold from monday 00:00), and
   the tally scratched into the night (one mark per call the book made, the lies crossed out). The
   "you are here" line, the playbook bracket and the underline were drawn once for the sketches and are
   reused as they are. The red pencil through a textbook line that lied is the only colour on the page.

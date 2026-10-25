@@ -62,10 +62,10 @@ a { color: inherit; }
 
 /* the word follows the photo's scale, so its feet always sink into the same grass. all of it stays
    on the page: its ink (36 to 1150 of the image's 1200) ends 4vw from the right edge. where that would
-   run it into the voice on the left (--lost-r: the voice's right edge, a gap, and the "xau" label),
+   run it into the voice on the left (--lost-r: the voice's right edge and a gap),
    it shrinks about the line where the grass cuts it (39% down the image), so its feet stay put. */
 .mark {
-  --lost-r: calc(7.6vw + min(440px, 36vw) + 140px);
+  --lost-r: calc(7.6vw + min(440px, 36vw) + 24px);
   --mw: min(62vw, calc(var(--fh) * .6697), calc((96vw - var(--lost-r)) / .928));
   position: absolute;
   top: calc(var(--fh) * .4899 - var(--mw) * .4671);
@@ -74,26 +74,36 @@ a { color: inherit; }
 }
 .mark h1 { margin: 0; }
 .mark h1 img { width: 100%; height: auto; }
-.goldline {
-  position: absolute; left: 0; top: -15%; width: 100%; height: 100%;
-  overflow: visible; mix-blend-mode: difference;
+/* gold this week, in the sky over the word: the palest, emptiest fog there is. it stands on the h's
+   left edge and takes about half the word's width, so it grows and shrinks with the word. */
+.gold {
+  position: absolute; left: 3%; bottom: calc(100% + 30px);
+  width: 46%; margin: 0;
 }
-.goldline path { fill: none; stroke: #fff; stroke-width: 1.3; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
-.xau-from, .xau-now span {
-  position: absolute; font-size: 15px; font-weight: 600; line-height: 1; white-space: nowrap;
-  font-variant-numeric: tabular-nums lining-nums;
+.gold figcaption { margin-bottom: 8px; font-size: 15px; font-weight: 600; line-height: 1; color: var(--ink-2); }
+.gold-plot { position: relative; height: 84px; }
+.gold-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.gold-plot path { fill: none; vector-effect: non-scaling-stroke; }
+.gold-plot .gold-axis { stroke: var(--rule); stroke-width: 1; }
+[data-goldline] { stroke: var(--ink); stroke-width: 1.3; stroke-linejoin: round; stroke-linecap: round; }
+.gold-days {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  margin: 6px 0 0; padding: 0; list-style: none;
+  font-size: 13px; font-weight: 600; line-height: 1; letter-spacing: .02em; color: var(--ink-3);
 }
-/* where the week began: quiet, in the fog left of the word, level with the line's first point */
-.xau-from { left: 3%; top: 30%; transform: translate(-100%, -50%) translateX(-12px); color: var(--ink-2); }
-/* now: the dot is cut out of whatever it sits on; the price is a small black tag, white figures,
-   so it reads the same on the fog and on a letter. near the right edge it hangs on the dot's left. */
-.xau-now { position: absolute; left: 72.8%; top: 30%; width: 0; height: 0; }
-.xau-now::before {
+.gold-days li { padding-left: 4px; }
+/* now: a dot, and the price as a small black tag with white figures; near friday it hangs on the dot's left */
+.gold-now { position: absolute; left: 0; top: 50%; width: 0; height: 0; }
+.gold-now::before {
   content: ""; position: absolute; left: -3px; top: -3px; width: 6px; height: 6px;
-  background: #fff; border-radius: 50%; mix-blend-mode: difference;
+  background: var(--ink); border-radius: 50%;
 }
-.xau-now span { left: 10px; top: 0; transform: translateY(-50%); padding: 3px 6px 4px; background: var(--ink); color: #fff; }
-.xau-now.flip span { left: auto; right: 10px; }
+.gold-now span {
+  position: absolute; left: 10px; top: 0; transform: translateY(-50%); padding: 3px 6px 4px;
+  font-size: 15px; font-weight: 600; line-height: 1; white-space: nowrap; font-variant-numeric: tabular-nums lining-nums;
+  background: var(--ink); color: #fff;
+}
+.gold-now.flip span { left: auto; right: 10px; }
 
 .gloss {
   position: absolute; z-index: 4; left: 4vw; top: 30px;
@@ -119,10 +129,12 @@ a { color: inherit; }
 .count [data-countdown] { font-variant-numeric: tabular-nums lining-nums; }
 
 /* the big time: dark toner. the fog thins its top to grain (a mask cut from the fog photo),
-   its body stands on the dragged ground, its foot is already on the page. */
+   its body stands on the dragged ground, its foot is already on the page. its top starts just
+   below the word's feet (--bt), so where the two share a column they never touch. */
+.fog { --bt: 53.5%; }
 .bigtime {
   position: absolute; z-index: 5;
-  left: 13.2vw; top: 47.5%;
+  left: 13.2vw; top: var(--bt);
   font-size: var(--th);
   width: 0.9645em; height: 1em;
   mix-blend-mode: multiply;
@@ -135,7 +147,7 @@ a { color: inherit; }
 .bigtime-cap {
   position: absolute; z-index: 5;
   left: calc(13.2vw + var(--th) * 0.02);
-  top: calc(47.5% + var(--th) * 1.0 + 4px);
+  top: calc(var(--bt) + var(--th) * 1.0 + 4px);
   font-size: 16px; font-weight: 600; line-height: 1.4; color: var(--ink-2);
   white-space: nowrap;
 }
@@ -160,7 +172,7 @@ a { color: inherit; }
 
 .cal {
   width: 100%; max-width: 1520px;
-  margin-top: 150px;
+  margin-top: 200px;   /* clear of the big time's caption, which hangs down to here */
   border-collapse: collapse; table-layout: fixed;
 }
 .c-time { width: 68px; } .c-imp { width: 60px; }
@@ -358,7 +370,7 @@ a { color: inherit; }
   .c-aside { width: 0; }
   .cal .aside { display: none; }
   .lost { width: min(400px, 40vw); font-size: 22px; }
-  .mark { --lost-r: calc(7.6vw + min(400px, 40vw) + 140px); }
+  .mark { --lost-r: calc(7.6vw + min(400px, 40vw) + 24px); }
 }
 
 /* ---------------------------------------------------------------- phones: the fog stays, the week scrolls sideways */
@@ -367,7 +379,16 @@ a { color: inherit; }
   .mark { --mw: 50vw; }   /* the voice is above it here; the word starts where the big time ends */
   .lost .count { margin-top: 1em; font-size: 14px; }
   .lost .gone { font-size: 13px; }
-  .side, .xau-from, .xau-now span { display: none; }
+  .side { display: none; }
+  .fog { --bt: 47.5%; }   /* the word is beside the time here, not above it */
+  /* the word is small here and the voice sits above its left half: the chart hangs between the voice
+     and the stamp on the right edge, without its caption */
+  .gold { left: auto; right: 16%; width: 66%; bottom: calc(100% + 16px); }
+  .gold figcaption { display: none; }
+  .gold-plot { height: 44px; }
+  .gold-days { font-size: 11px; margin-top: 4px; }
+  .gold-days li { padding-left: 2px; }
+  .gold-now span { font-size: 12px; padding: 2px 4px 3px; }
   .stamp-time { left: auto; right: 4vw; font-size: 13px; }
   .bigtime-cap { font-size: 14px; }
   .week { margin-top: -120px; padding: 0 0 100px 16px; }

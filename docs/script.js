@@ -160,37 +160,34 @@
     shown = null;
   }
 
-  // gold this week, plotted through the word: monday 00:00 at the left, saturday 00:00 at the right
+  // gold this week, in the sky over the word: monday 00:00 at the left, saturday 00:00 at the right
   function drawGold() {
     var pts = (DATA.gold && DATA.gold.points) || [];
-    var path = $('[data-goldline]'), now = $('[data-xau-now]'), from = $('.xau-from');
-    if (pts.length < 2) { path.setAttribute('d', ''); now.hidden = true; from.hidden = true; return; }
+    var fig = $('[data-gold]'), path = $('[data-goldline]'), now = $('[data-xau-now]');
+    if (pts.length < 2) { path.setAttribute('d', ''); fig.hidden = true; return; }
     var lo = Infinity, hi = -Infinity;
     pts.forEach(function (p) { lo = Math.min(lo, p[1]); hi = Math.max(hi, p[1]); });
     // a quiet hour stays quiet: less than half a percent of the price is never stretched over the
-    // whole band, it sits flat in the middle of it (an hour into monday is a few dollars, not a cliff)
+    // whole height, it sits flat in the middle (an hour into monday is a few dollars, not a cliff)
     var span = Math.max(hi - lo, hi * 0.005);
     lo = (hi + lo - span) / 2;
-    // the band runs through the body of the letters, above the grass (25% to 35% of the word's height)
     var r = seeded('gold' + DATA.week.start), d = '', last = null, X = 0, Y = 0;
     pts.forEach(function (p) {
       var ms = p[0] * 1000;
-      X = 30 + (ms - WEEK0) / (5 * DAY) * 940 + gauss(r, 0.35);
-      Y = 500 - (p[1] - lo) / span * 100 + gauss(r, 0.6);
+      X = Math.min(1000, Math.max(0, (ms - WEEK0) / (5 * DAY) * 1000 + gauss(r, 0.35)));
+      Y = 270 - (p[1] - lo) / span * 240 + gauss(r, 1.2);
       // the pen lifts where the market was shut
       d += (last === null || ms - last > 2 * 3600e3 ? ' M' : ' L') + X.toFixed(1) + ',' + Y.toFixed(1);
       last = ms;
     });
     path.setAttribute('d', d.trim());
-    var y0 = 500 - (pts[0][1] - lo) / span * 100;
-    from.hidden = false;
-    from.style.left = ((30 + (pts[0][0] * 1000 - WEEK0) / (5 * DAY) * 940) / 10).toFixed(2) + '%';
-    from.style.top = (-15 + y0 / 10).toFixed(2) + '%';
-    now.hidden = false;
+    var first = pts[0][1], price = pts[pts.length - 1][1];
+    fig.hidden = false;
+    fig.setAttribute('aria-label', 'gold this week: ' + first.toFixed(1) + ' at the open, ' + price.toFixed(1) + ' now');
     now.style.left = (X / 10).toFixed(2) + '%';
-    now.style.top = (-15 + Y / 10).toFixed(2) + '%';
-    now.classList.toggle('flip', X > 820);   // friday's tag would run off the page
-    now.querySelector('span').textContent = pts[pts.length - 1][1].toFixed(1);
+    now.style.top = (Y / 3).toFixed(2) + '%';
+    now.classList.toggle('flip', X > 820);   // friday's tag would run off the chart
+    now.querySelector('span').textContent = price.toFixed(1);
   }
 
   // ---------------------------------------------------------------- the week

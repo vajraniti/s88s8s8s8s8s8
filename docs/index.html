@@ -22,10 +22,18 @@
   <img class="fog-photo" src="img/hero.png" width="1920" height="1400" alt="">
   <div class="mark">
     <h1><img src="img/hiranya.png" width="1200" height="1452" alt="hiranya"></h1>
-    <!-- gold this week, monday 00:00 to now, drawn across the word from data.json -->
-    <svg class="goldline" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true"><path data-goldline d=""/></svg>
-    <p class="xau-from" aria-hidden="true" hidden>xau, mon 00:00</p>
-    <p class="xau-now" aria-hidden="true" data-xau-now hidden><span></span></p>
+    <!-- gold this week, monday 00:00 to saturday 00:00, drawn from data.json in the sky over the word -->
+    <figure class="gold" role="img" aria-label="" data-gold hidden>
+      <figcaption aria-hidden="true">xau this week</figcaption>
+      <div class="gold-plot" aria-hidden="true">
+        <svg viewBox="0 0 1000 300" preserveAspectRatio="none">
+          <path class="gold-axis" d="M0,300H1000M0,300v-18M200,300v-18M400,300v-18M600,300v-18M800,300v-18M1000,300v-18"/>
+          <path data-goldline d=""/>
+        </svg>
+        <p class="gold-now" data-xau-now><span></span></p>
+      </div>
+      <ol class="gold-days" aria-hidden="true"><li>mon</li><li>tue</li><li>wed</li><li>thu</li><li>fri</li></ol>
+    </figure>
   </div>
   <img class="fog-front" src="img/hero-front.png" width="1920" height="1400" alt="">
 
