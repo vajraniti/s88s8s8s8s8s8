@@ -57,11 +57,17 @@ a { color: inherit; }
 }
 .fog-front { z-index: 3; pointer-events: none; }
 
-/* the word follows the photo's scale, so its feet always sink into the same grass */
+/* the word follows the photo's scale, so its feet always sink into the same grass. all of it stays
+   on the page: its ink (36 to 1150 of the image's 1200) ends 4vw from the right edge. where that would
+   run it into the voice on the left (--lost-r: the voice's right edge, a gap, and the "xau" label),
+   it shrinks about the line where the grass cuts it (39% down the image), so its feet stay put. */
 .mark {
-  position: absolute; top: 17.71%;
-  right: max(-12.5vw, calc(var(--fh) * -.135));
-  width: min(62vw, calc(var(--fh) * .6697));
+  --lost-r: calc(7.6vw + min(440px, 36vw) + 140px);
+  --mw: min(62vw, calc(var(--fh) * .6697), calc((96vw - var(--lost-r)) / .928));
+  position: absolute;
+  top: calc(var(--fh) * .4899 - var(--mw) * .4671);
+  right: calc(4vw - var(--mw) * .0417);
+  width: var(--mw);
 }
 .mark h1 { margin: 0; }
 .mark h1 img { width: 100%; height: auto; }
@@ -343,11 +349,13 @@ a { color: inherit; }
   .c-aside { width: 0; }
   .cal .aside { display: none; }
   .lost { width: min(400px, 40vw); font-size: 22px; }
+  .mark { --lost-r: calc(7.6vw + min(400px, 40vw) + 140px); }
 }
 
 /* ---------------------------------------------------------------- phones: the fog stays, the week scrolls sideways */
 @media (max-width: 760px) {
   .lost { left: 5vw; top: 12%; width: 48vw; font-size: 16px; line-height: 1.25; }
+  .mark { --mw: 50vw; }   /* the voice is above it here; the word starts where the big time ends */
   .lost .count { margin-top: 1em; font-size: 14px; }
   .lost .gone { font-size: 13px; }
   .side, .xau-from, .xau-now span { display: none; }
