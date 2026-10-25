@@ -41,6 +41,9 @@ a { color: inherit; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 [hidden] { display: none !important; }
 .tnum { font-variant-numeric: tabular-nums lining-nums; }
+/* selecting is inking: black under white letters, and the other way round under the ice */
+::selection { background: var(--ink); color: #fff; }
+.night ::selection { background: var(--night-ink); color: var(--night); }
 
 /* ---------------------------------------------------------------- the fog */
 .fog {
